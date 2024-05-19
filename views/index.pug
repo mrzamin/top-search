@@ -1,0 +1,110 @@
+extends layout
+
+block content
+
+
+  nav.site-nav.grid
+    h1 Cosmo Junkie
+    ul
+      li
+        a(href="#portfolio") Portfolio
+      li
+        a(href="#skills") Skills
+      li
+        a(href="#contact") Contact
+  section#welcome.grid
+    .welcome-text
+      h2
+        | Space Enthusiast
+        br
+        | & JavaScript Developer
+      p.leading
+        | Lorem ipsum dolor sit amet, consectetur adipiscing elit. In commodo
+        |   consequat.
+      a.button(href="#portfolio") View my work
+    .welcome-img
+      img(
+        alt="pic of odin" 
+        src="../public/images/odin.svg"
+        )
+  section#portfolio
+    h3 Some of my Projects
+    .projects.grid
+      a(href="#")
+        img(
+          alt="node image" 
+          src="../public/images/Node.svg"
+          )
+        h4 Space Race Game
+      a(href="#")
+        img(
+          alt="react image" 
+          src="../public/images/React.svg"
+          )
+        h4 Planet Boy API
+      a(href="#")
+        img(
+          alt="html and css image" 
+          src="../public/images/html-and-css.svg"
+          )
+        h4 Captain Cosmo Blog
+  section#skills
+    h3 Things I Can Do
+    ul.grid
+      li
+        img(
+          alt="comet" 
+          src="assets/comet_1.svg"
+          )
+        h4 JavaScript
+      li
+        img(
+          alt="comet" 
+          src="assets/comet_2.svg"
+          )
+        h4 React
+      li
+        img(
+          alt="comet" 
+          src="assets/comet_3.svg"
+          )
+        h4 Firebase
+      li
+        img(
+          alt="comet" 
+          src="assets/comet_4.svg"
+          )
+        h4 Flutter
+    p.leading
+      | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc fringilla
+      |   lacus diam. Mauris fringilla consectetur nibh, sit amet tempus augue.
+  section#contact
+    h3 Get In Touch
+    p.leading Lorem ipsum dolor sit amet, consectetur.
+    form
+      input(
+        placeholder="NAME" 
+        type="text"
+        )
+      input(
+        placeholder="EMAIL" 
+        type="email"
+        )
+      textarea(placeholder="YOUR MESSAGE")
+      button.button Send Flare
+  footer
+    .grid
+      p.copyright Copyright 2020 Cosmo Junkie
+      ul.social
+        li
+          a(href="#")
+            img(
+              alt="facebook" 
+              src="assets/icon_fb.svg"
+              )
+        li
+          a(href="#")
+            img(
+              alt="twitter" 
+              src="assets/icon_tw.svg"
+              )
