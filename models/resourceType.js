@@ -12,7 +12,7 @@ const ResourceTypeSchema = new Schema({
 });
 
 ResourceTypeSchema.virtual("url").get(function () {
-  return `/database/resourcetype/${this._id}`;
+  return `/database/type/${this._id}`;
 });
 
 module.exports = mongoose.model("ResourceType", ResourceTypeSchema);

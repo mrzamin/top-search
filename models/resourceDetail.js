@@ -10,8 +10,10 @@ const ResourceDetailSchema = new Schema({
   href: { type: String, required: true },
 });
 
+// ResourceDetailSchema.index({ name: "text" });
+
 ResourceDetailSchema.virtual("url").get(function () {
-  return `/database/resourcedetail/${this._id}`;
+  return `/database/resource/${this._id}`;
 });
 
 module.exports = mongoose.model("ResourceDetail", ResourceDetailSchema);
