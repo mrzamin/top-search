@@ -28,9 +28,9 @@ async function main() {
   await mongoose.connect(mongoDB);
   console.log("Debug: Should be connected?");
   await createCourses();
-  await createResources();
   await createTypes();
   await createOwners();
+  await createResources();
   console.log("Debug: Closing mongoose");
   mongoose.connection.close();
 }
