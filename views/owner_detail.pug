@@ -1,0 +1,16 @@
+extends layout
+
+block content
+
+  h1 Author: #{owner.owner}
+
+  div(style='margin-left:20px;margin-top:20px')
+
+    h2(style='font-size: 1.5rem;') Resources
+    if owner_resources.length
+      dl
+        each resource in owner_resources
+          dt
+            a(href=resource.url) #{resource.name}
+    else
+      p This author has no resources.

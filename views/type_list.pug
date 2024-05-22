@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1= title
+  if type_list.length
+    ul
+      each type in type_list
+        li
+          a(href=type.url) #{type.type}
+
+  else
+    p There are no resources.

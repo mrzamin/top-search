@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1= title
+  if resource_list.length
+    ul
+      each resource in resource_list
+        li
+          a(href=resource.href) #{resource.course.course}: #{resource.name} (#{resource.owner.owner})
+
+  else
+    p There are no resources.

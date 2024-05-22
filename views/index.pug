@@ -3,15 +3,15 @@ extends layout
 block content
 
 
-  nav.site-nav.grid
-    h1 ReferenceTOP
-    ul
-      li
-        a(href="#portfolio") Database
-      li
-        a(href="#skills") Purpose
-      li
-        a(href="#contact") Contact
+  //- nav.site-nav.grid
+  //-   h1 ReferenceTOP
+  //-   ul
+  //-     li
+  //-       a(href="#portfolio") Database
+  //-     li
+  //-       a(href="#skills") Purpose
+  //-     li
+  //-       a(href="#contact") Contact
   section#welcome.grid
     .welcome-text
       h2
@@ -27,9 +27,9 @@ block content
         src="../images/mouseclick.png"
         )
   section#portfolio
-    h3 Course Materials in the Database
+    h3 Course Materials in this Database
     .projects.grid
-      a(href="#")
+      a(href="/database/resources/node")
         h4 Node Course
       a(href="#")
         h4 React Course
@@ -44,32 +44,20 @@ block content
       a(href="#")
         h4 Getting Hired Course
   section#skills
-    h3 Things I Can Do
+    h3 Collections & Document Counts
     ul.grid
       li
-        img(
-          alt="comet" 
-          src="assets/comet_1.svg"
-          )
-        h4 JavaScript
+        a(href="#portfolio").button !{course_count}
+        h4 Courses
       li
-        img(
-          alt="comet" 
-          src="assets/comet_2.svg"
-          )
-        h4 React
+        a(href="/database/resources").button !{resource_count}
+        h4 Resources
       li
-        img(
-          alt="comet" 
-          src="assets/comet_3.svg"
-          )
-        h4 Firebase
+        a(href="/database/types").button !{type_count}
+        h4 Resource Types
       li
-        img(
-          alt="comet" 
-          src="assets/comet_4.svg"
-          )
-        h4 Flutter
+        a(href="/database/owners").button !{owner_count}
+        h4 Authors
     p.leading
       | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc fringilla
       |   lacus diam. Mauris fringilla consectetur nibh, sit amet tempus augue.
@@ -87,19 +75,19 @@ block content
         )
       textarea(placeholder="YOUR MESSAGE")
       button.button Send Flare
-  footer
-    .grid
-      p.copyright Copyright 2020 Cosmo Junkie
-      ul.social
-        li
-          a(href="#")
-            img(
-              alt="facebook" 
-              src="assets/icon_fb.svg"
-              )
-        li
-          a(href="#")
-            img(
-              alt="twitter" 
-              src="assets/icon_tw.svg"
-              )
+  //- footer
+  //-   .grid
+  //-     p.copyright Copyright 2020 Cosmo Junkie
+  //-     ul.social
+  //-       li
+  //-         a(href="#")
+  //-           img(
+  //-             alt="facebook" 
+  //-             src="assets/icon_fb.svg"
+  //-             )
+  //-       li
+  //-         a(href="#")
+  //-           img(
+  //-             alt="twitter" 
+  //-             src="assets/icon_tw.svg"
+  //-             )

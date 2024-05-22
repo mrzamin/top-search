@@ -4,4 +4,28 @@ html
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
+    nav.site-nav.grid
+      h1 ReferenceTOP
+      ul
+        li
+          a(href="#portfolio") Database
+        li
+          a(href="#skills") Purpose
+        li
+          a(href="#contact") Contact
     block content
+    footer.grid
+      p.copyright Copyright 2020 Cosmo Junkie
+      ul.social
+        li
+          a(href="#")
+            img(
+              alt="facebook" 
+              src="assets/icon_fb.svg"
+              )
+        li
+          a(href="#")
+            img(
+              alt="twitter" 
+              src="assets/icon_tw.svg"
+              )

@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1= title
+  if owner_list.length
+    ul
+      each owner in owner_list
+        li
+          a(href=owner.url) #{owner.owner}
+
+  else
+    p There are no resources.

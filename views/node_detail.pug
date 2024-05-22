@@ -1,0 +1,15 @@
+extends layout
+
+block content
+
+  h1 Node Resources
+
+  div(style='margin-left:20px;margin-top:20px')
+
+    if node_resources.length
+      dl
+        each resource in node_resources
+          dt
+            a(href=resource.url) #{resource.name}
+    else
+      p There are no Node resources.
