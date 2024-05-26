@@ -12,6 +12,10 @@ const type_controller = require("../controllers/typeController");
 // GET database home page.
 router.get("/", resource_controller.index);
 
+// router.get("/searchauthor", owner_controller.search_get);
+
+// router.post("/searchauthor", owner_controller.search_post);
+
 // GET request for creating a Resource. NOTE This must come before routes that display Resource (uses id).
 router.get("/resource/create", resource_controller.resource_create_get);
 
@@ -33,16 +37,30 @@ router.post("/resource/:id/update", resource_controller.resource_update_post);
 // GET request for one Resource.
 router.get("/resource/:id", resource_controller.resource_detail);
 
+router.get("/resources/node", resource_controller.node_detail);
+
+router.get("/resources/react", resource_controller.react_detail);
+
+router.get("/resources/javascript", resource_controller.javascript_detail);
+
+router.get(
+  "/resources/advancedhtmlandcss",
+  resource_controller.advanced_detail
+);
+router.get(
+  "/resources/intermediatehtmlandcss",
+  resource_controller.intermediate_detail
+);
 // GET request for list of all Resource items.
 router.get("/resources", resource_controller.resource_list);
 
 /// OWNER ROUTES ///
 
 // GET request for creating Owner. NOTE This must come before route for id (i.e. display owner).
-router.get("/owner/create", owner_controller.owner_create_get);
+router.get("/author/create", owner_controller.owner_create_get);
 
 // POST request for creating Owner.
-router.post("/owner/create", owner_controller.owner_create_post);
+router.post("/author/create", owner_controller.owner_create_post);
 
 // GET request to delete Owner.
 router.get("/owner/:id/delete", owner_controller.owner_delete_get);
@@ -57,10 +75,10 @@ router.get("/owner/:id/update", owner_controller.owner_update_get);
 router.post("/owner/:id/update", owner_controller.owner_update_post);
 
 // GET request for one Owner.
-router.get("/owner/:id", owner_controller.owner_detail);
+router.get("/author/:id", owner_controller.owner_detail);
 
 // GET request for list of all Owners.
-router.get("/owners", owner_controller.owner_list);
+router.get("/authors", owner_controller.owner_list);
 
 /// TYPE ROUTES ///
 
