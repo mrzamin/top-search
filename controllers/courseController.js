@@ -11,6 +11,10 @@ exports.course_detail = asyncHandler(async (req, res, next) => {
   res.send(`NOT IMPLEMENTED: Course detail: ${req.params.id}`);
 });
 
+exports.node_detail = asyncHandler(async (req, res, next) => {
+  res.send(`NOT IMPLEMENTED: node detail: ${req.params.id}`);
+});
+
 // Display Course create form on GET.
 exports.course_create_get = asyncHandler(async (req, res, next) => {
   res.send("NOT IMPLEMENTED: Course create GET");
