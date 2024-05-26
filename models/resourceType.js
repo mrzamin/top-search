@@ -6,8 +6,8 @@ const ResourceTypeSchema = new Schema({
   type: {
     type: String,
     required: true,
-    enum: ["Article", "Documentation", "Video", "Audio"],
-    default: "Article",
+    maxLength: 30,
+    minLength: 3,
   },
 });
 
