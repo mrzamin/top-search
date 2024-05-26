@@ -6,13 +6,18 @@ html
   body
     nav.site-nav.grid
       h1 ReferenceTOP
-      ul
+      ul.nav-content
+        li.dropdown
+          a(href="#portfolio").dropbtn.nav-item Database
+          ul.dropdown-content
+            a(href="#portfolio")  Explore Database 
+            a(href="/database/resource/create")  Add New Resource 
+            a(href="/database/author/create")  Add New Author
+
         li
-          a(href="#portfolio") Database
+          a(href="#skills").nav-item Purpose
         li
-          a(href="#skills") Purpose
-        li
-          a(href="#contact") Contact
+          a(href="#contact").nav-item Contact
     block content
     footer.grid
       p.copyright Copyright 2020 Cosmo Junkie

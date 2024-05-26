@@ -1,0 +1,15 @@
+extends layout
+
+block content
+
+  h1 Intermediate HTML & CSS Resources
+
+  div(style='margin-left:20px;margin-top:20px')
+
+    if intermediate_resources.length
+      dl
+        each resource in intermediate_resources
+          dt
+            a(href=resource.url) #{resource.name}
+    else
+      p There are no Intermediate HTML & CSS resources.

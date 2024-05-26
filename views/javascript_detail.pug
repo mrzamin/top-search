@@ -1,0 +1,15 @@
+extends layout
+
+block content
+
+  h1 JavaScript Resources
+
+  div(style='margin-left:20px;margin-top:20px')
+
+    if javascript_resources.length
+      dl
+        each resource in javascript_resources
+          dt
+            a(href=resource.url) #{resource.name}
+    else
+      p There are no JavaScript resources.

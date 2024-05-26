@@ -2,6 +2,7 @@ extends layout
 
 block content
   h1= title
+  a(href="/database/author/create") + Create new author
   if owner_list.length
     ul
       each owner in owner_list
