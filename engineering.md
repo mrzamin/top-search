@@ -1,5 +1,5 @@
 ## _Engineering Documentation for:_
-# CuratedWeb
+# CurateWeb
 
 
 [![N|Solid](https://cldup.com/dTxpPi9lDf.thumb.png)](https://nodesource.com/products/nsolid)
@@ -21,6 +21,7 @@ CuratedWeb Database is a simple, mobile-ready, Node.js- and MongoDB- powered web
 > or formatting instructions.
 
 ## Rationale
+
 ## Background
 ## Terminology
 ## Non-Goals
@@ -44,6 +45,26 @@ CuratedWeb Database is a simple, mobile-ready, Node.js- and MongoDB- powered web
       * Deployment
 <!--te-->
 
+## Project/Product
+### Goals
+### Plans for feature feedback
+
+## UI/UX
+### Research(#stdin)
+### UI/Componentization
+### Design
+### Plans for design feedback
+
+## Engineering
+### Architecture
+I use the Model-View-Controller (MVC) architectural/design framework for separating out my Express application into logical components. The advantage of MVC is that it creates a clear division between the user interface, data store, and application logic. Every type of entry in the database (Resource, Author, Type, and Subject) has its own **model** that holds the data logic of that type of entry. Similarly, each of the various pages of the website are represented and created with a **view**, which is a component that generates the UI with data supplied by the controllers. Finally, my **controllers** are components that get called upon whenever a user makes a GET request to my application. These controllers act as the intermediaries between the models and views; they use the details of the request to determine which view is shown to the user.
+### Frontend/Client
+There is no frontend for this web app. I focused purely on the backend concepts that were required for this app -- 
+### Backend
+### Database
+#### Schema
+### Testing
+### Deployment
 
 - Import a HTML file and watch it magically convert to Markdown
 - Drag and drop images (requires your Dropbox account be linked)
