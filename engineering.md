@@ -1,7 +1,7 @@
 ## _Engineering Documentation for:_
 # CurateWeb
 
-CurateWeb Database is a simple, mobile-ready, Node.js- and MongoDB- powered web app featuring a curated collection of free online materials for learning web development.
+CurateWeb Database is a simple, mobile-friendly, Node.js- and MongoDB- powered web app featuring a curated collection of free online materials for learning web development.
 ![Screenshot from 2024-05-27 21-31-42](https://github.com/mrzamin/top-search/assets/142754418/225db719-22c1-4d62-b1ce-9580972e9774)
 
 
