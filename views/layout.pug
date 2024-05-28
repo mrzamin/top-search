@@ -3,34 +3,36 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+    script(type='text/javascript', href='/javascripts/classNames.js')
   body
     nav.site-nav.grid
-      h1 ReferenceTOP
+      h1 
+        a(href="/database") CurateWeb
       ul.nav-content
         li.dropdown
-          a(href="#portfolio").dropbtn.nav-item Database
+          a(href="#materials").dropbtn.nav-item Database
           ul.dropdown-content
-            a(href="#portfolio")  Explore Database 
+            a(href="#materials")  Explore Database 
             a(href="/database/resource/create")  Add New Resource 
             a(href="/database/author/create")  Add New Author
 
         li
-          a(href="#skills").nav-item Purpose
+          a(href="#purpose").nav-item Purpose
         li
           a(href="#contact").nav-item Contact
     block content
     footer.grid
-      p.copyright Copyright 2020 Cosmo Junkie
+      p.copyright Copyright 2024 Marisa Minard
       ul.social
         li
           a(href="#")
             img(
-              alt="facebook" 
+              alt="social link" 
               src="assets/icon_fb.svg"
               )
         li
           a(href="#")
             img(
-              alt="twitter" 
+              alt="social link" 
               src="assets/icon_tw.svg"
               )

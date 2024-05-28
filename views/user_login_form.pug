@@ -1,0 +1,36 @@
+extends layout
+
+block content
+
+    form(
+    method="post" 
+    action="/users/login"
+    ).login.login-container
+        label(for="username")
+        b Username
+        input( 
+        name="username" 
+        placeholder="Enter Username" 
+        type="text"
+        value=(undefined===username ? '' : username)
+        required
+        )
+        label(for="password")
+        b Password
+        input(
+        required="" 
+        name="password" 
+        placeholder="Enter Password" 
+        type="password"
+        )
+        button(type="submit") Login
+       
+        | Don't have an account? 
+        a(href="/users/signup") Sign up 
+    .login-container(style="background-color:#f1f1f1")
+        button.cancelbtn(type="button") Cancel
+        span.password
+        | Forgot
+        a(href="#") password?
+    if messages
+        p !{messages}

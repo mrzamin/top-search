@@ -1,0 +1,23 @@
+extends layout
+
+block content
+
+  h1 #{title}: #{owner.owner}
+
+  if owner_resources.length
+
+    p #[strong Delete the following resources before attempting to delete this author.]
+    div(style='margin-left:20px;margin-top:20px')
+      h4 Resources
+      dl
+        each resource in owner_resources
+          dt
+            a(href=resource.url) #{resource.name}
+  else
+    p Do you really want to delete this author?
+
+    form(method='POST')
+      div.form-group
+        input#ownerid.form-control(type='hidden', name='ownerid', value=owner._id )
+
+      button.btn.btn-primary(type='submit') Delete

@@ -1,0 +1,23 @@
+extends layout
+
+block content
+
+  h1 #{title}: #{course.course}
+
+  if course_resources.length
+
+    p #[strong Update the course for the following resource(s) before attempting to delete this course.]
+    div(style='margin-left:20px;margin-top:20px')
+      h4 Resources
+      dl
+        each resource in course_resources
+          dt
+            a(href=resource.url) #{resource.name}
+  else
+    p Do you really want to delete this course?
+
+    form(method='POST')
+      div.form-group
+        input#courseid.form-control(course='hidden', name='courseid', value=course._id )
+
+      button.btn.btn-primary(course='submit') Delete

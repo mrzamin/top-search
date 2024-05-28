@@ -2,53 +2,43 @@ extends layout
 
 block content
 
-
-  //- nav.site-nav.grid
-  //-   h1 ReferenceTOP
-  //-   ul
-  //-     li
-  //-       a(href="#portfolio") Database
-  //-     li
-  //-       a(href="#skills") Purpose
-  //-     li
-  //-       a(href="#contact") Contact
   section#welcome.grid
     .welcome-text
       h2
-        | Quickly reference TOP Learning Materials
+        | A Curated Collection of Web Development Materials
         
       p.leading
-        | Access The Odin Project materials via a convenient search feature.
+        | Access the best free learning resources via a convenient search feature.
         
-      a.button(href="#portfolio") Explore Database
+      a.button(href="#materials") Explore Database
     .welcome-img
       img(
         alt="mouseclick image" 
         src="../images/mouseclick.png"
         )
-  section#portfolio
-    h3 Course Materials in this Database
+  section#materials
+    h3 Materials in this Database
     .projects.grid
       a(href="/database/resources/node")
-        h4 Node Course
+        h4 Node
       a(href="/database/resources/react")
-        h4 React Course
+        h4 React
       a(href="/database/resources/javascript")
-        h4 JavaScript Course
+        h4 JavaScript
       a(href="/database/resources/advancedhtmlandcss")
-        h4 Advanced HTML & CSS Course
+        h4 Advanced HTML & CSS
       a(href="/database/resources/intermediatehtmlandcss")
-        h4 Intermediate HTML & CSS Course
+        h4 Intermediate HTML & CSS
       a(href="/database/resources/foundations")
-        h4 Foundations Course
+        h4 Foundations
       a(href="/database/resources/gettinghired")
-        h4 Getting Hired Course
-  section#skills
+        h4 Getting Hired
+  section#purpose
     h3 Collections & Document Counts
     ul.grid
       li
         a(href="#portfolio").button !{course_count}
-        h4 Courses
+        h4 Subjects
       li
         a(href="/database/resources").button !{resource_count}
         h4 Resources
@@ -63,7 +53,7 @@ block content
       |   lacus diam. Mauris fringilla consectetur nibh, sit amet tempus augue.
   section#contact
     h3 Get In Touch
-    p.leading Lorem ipsum dolor sit amet, consectetur.
+    p.leading Send me your comment or feedback about this database!
     form
       input(
         placeholder="NAME" 
@@ -74,20 +64,4 @@ block content
         type="email"
         )
       textarea(placeholder="YOUR MESSAGE")
-      button.button Send Flare
-  //- footer
-  //-   .grid
-  //-     p.copyright Copyright 2020 Cosmo Junkie
-  //-     ul.social
-  //-       li
-  //-         a(href="#")
-  //-           img(
-  //-             alt="facebook" 
-  //-             src="assets/icon_fb.svg"
-  //-             )
-  //-       li
-  //-         a(href="#")
-  //-           img(
-  //-             alt="twitter" 
-  //-             src="assets/icon_tw.svg"
-  //-             )
+      button.button Send Message

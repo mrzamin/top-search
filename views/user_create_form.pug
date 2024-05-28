@@ -1,0 +1,54 @@
+extends layout
+
+block content
+
+    form(
+    style="border:1px solid #ccc" 
+    method='POST'
+    ).form-container
+        h1 Sign Up
+        p Please fill in this form to create an account.
+        hr
+        label(for="username")
+        b Username
+        input(
+        required 
+        name="username" 
+        placeholder="Enter Username" 
+        type="text"
+        value=(undefined===username ? '' : username)
+        )
+        label(for="password")
+        b Password
+        input(
+        required 
+        name="password" 
+        placeholder="Enter Password" 
+        type="password"
+        )
+        label(for="password-repeat")
+        b Repeat Password
+        input(
+        required 
+        name="password-repeat" 
+        placeholder="Repeat Password" 
+        type="password"
+        )
+      
+        | Already have an account? 
+        a(href="/users/login") Login 
+        p
+        | By creating an account you agree to our
+        a(
+            style="color:dodgerblue" 
+            href="#"
+            ) Terms & Privacy
+        | .
+        .clearfix
+        button.cancelbtn(type="button") Cancel
+        button.signupbtn(type="submit") Sign Up
+
+        if errors
+            ul
+            for error in errors
+                li!= error.msg

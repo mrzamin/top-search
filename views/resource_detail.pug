@@ -9,7 +9,10 @@ block content
   p #[strong In Course: ] #{resource.course.course}
 
   a(href="/database/resource/create") Create a new resource 
-  a(href="/database/resources") Back to resource list 
+  a(href="/database/resources") Back to resource list
+
+  p 
+    a(href=resource.url+'/delete') Delete resource
    
 
 

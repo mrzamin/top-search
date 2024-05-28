@@ -1,0 +1,23 @@
+extends layout
+
+block content
+
+  h1 #{title}: #{type.type}
+
+  if type_resources.length
+
+    p #[strong Update the following resources' type before attempting to delete this type.]
+    div(style='margin-left:20px;margin-top:20px')
+      h4 Resources
+      dl
+        each resource in type_resources
+          dt
+            a(href=resource.url) #{resource.name}
+  else
+    p Do you really want to delete this type?
+
+    form(method='POST')
+      div.form-group
+        input#typeid.form-control(type='hidden', name='typeid', value=type._id )
+
+      button.btn.btn-primary(type='submit') Delete

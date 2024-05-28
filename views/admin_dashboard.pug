@@ -1,0 +1,52 @@
+extends layout
+
+block content
+
+    .dashboard-wrapper 
+        .grid-container.dashboard
+            .menu-icon
+                i.fas.fa-bars.header__menu
+            header.header
+                .header__search 
+                .header__avatar 
+            aside.sidenav
+                .sidenav__close-icon
+                i.fas.fa-times.sidenav__brand-close
+                ul.sidenav__list
+                li.sidenav__list-item 
+                    a(href="/database/resources") Resources
+                li.sidenav__list-item 
+                    a(href="/database/authors") Authors
+
+                li.sidenav__list-item
+                    a(href="/database/types") Types
+                li.sidenav__list-item
+                    a(href="/database/courses") Subjects
+             
+            main.main
+                .main-header
+                    .main-header__heading Welcome back !{currentUser.username}! 
+                    .main-header__updates Last Login: 05/27/2024
+                .main-overview
+                    .overviewcard
+                        .overviewcard__icon Resources
+                        .overviewcard__info 73
+                    .overviewcard
+                        .overviewcard__icon Author
+                        .overviewcard__info 25
+                    .overviewcard
+                        .overviewcard__icon Types
+                        .overviewcard__info 4
+                    .overviewcard
+                        .overviewcard__icon Subjects 
+                        .overviewcard__info 7
+                .main-cards
+                    .card Recently Added: Resources
+                    .card Recently Added: Authors
+                    .card Recently Added: Subjects
+            footer.footer
+                .footer__copyright 
+                .footer__signature 
+
+
+    

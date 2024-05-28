@@ -1,0 +1,14 @@
+extends layout
+
+block content
+
+  h1 #{title}: #{resource.name}
+
+
+    p Do you really want to delete this resource?
+
+    form(method='POST')
+      div.form-group
+        input#resourceid.form-control(type='hidden', name='resourceid', value=resource._id )
+
+      button.btn.btn-primary(type='submit') Delete
