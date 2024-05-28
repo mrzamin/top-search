@@ -171,7 +171,6 @@ exports.resource_create_get = asyncHandler(async (req, res, next) => {
   });
 });
 
-// Handle book create on POST.
 exports.resource_create_post = [
   // Validate and sanitize fields.
   body("name", "Resource name must be between 3-100 characters.")
@@ -197,7 +196,6 @@ exports.resource_create_post = [
     // Extract the validation errors from a request.
     const errors = validationResult(req);
 
-    // Create a Book object with escaped and trimmed data.
     const resource = new ResourceDetail({
       name: req.body.name,
       owner: req.body.author,
@@ -209,7 +207,6 @@ exports.resource_create_post = [
     if (!errors.isEmpty()) {
       // There are errors. Render form again with sanitized values/error messages.
 
-      // Get all authors and genres for form.
       const [allCourses, allTypes, allAuthors] = await Promise.all([
         Course.find().sort({ course: 1 }).exec(),
         ResourceType.find().sort({ type: 1 }).exec(),
@@ -230,7 +227,6 @@ exports.resource_create_post = [
         errors: errors.array(),
       });
     } else {
-      // Data from form is valid. Save book.
       await resource.save();
       res.redirect(resource.url);
     }
