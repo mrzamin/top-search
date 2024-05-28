@@ -41,7 +41,7 @@ For the members only app, user authentication using the Passport Local Strategy 
       * [Page design](#Page-design)
    * [Engineering](#Engineering)
      * [Architecture](#Architecture)
-        * [Frontend](#Frontend/Client)
+        * [Frontend](#Frontend)
         * [Backend](#Backend)
         * [Database](#Database)
            * [Schema](#Schema)
@@ -50,7 +50,7 @@ For the members only app, user authentication using the Passport Local Strategy 
       * [Deployment](#Deployment)
 <!--te-->
 
-## Project <a name="Project"></a>
+## Project
 ### Goals
 MVP:
 - Visitors can view lists and detailed views of resources, authors, types
@@ -76,7 +76,9 @@ Nice-to-haves:
 
 This website will be distributed with friends, family, and peers who will likely access it for the first time on mobile phones. Hence for this app, I specifically wanted to implement a mobile-first design. It was a good opportunity to practicing doing it with vanilla CSS and HTML, given that this is a backend-focused project where the UI styles are intentionally simplistic. The site does not have much reactive complexity; the values are plugged server-side into a template to serve the HTML to the client. I have previous experience with responsive design, but not mobile-first, so I decided to research it. The mobile-first approach simply means coding the website with mobile screen sizes in mind at the start. Media queries are used to achieve this.
 
-### UI
+### Componentization
+
+I chose Pug as my template engine of choice over others -- like EJS -- due to their concise and intuitive indentation. 
 
 Located in `views`:
 
