@@ -39,15 +39,15 @@ For the members only app, user authentication using the Passport Local Strategy 
       * [UI/Componentization](#UI/Componentization)
       * [Design](#Design)
       * [Page design](#page-design)
-   * Engineering
-     * Architecture
-        * Frontend/Client
-        * Backend
-        * Database
-           * Schema
-           * ORM/ODM
-      * Testing
-      * Deployment
+   * [Engineering](#engineering)
+     * [Architecture](#Architecture)
+        * [Frontend/Client](#Frontend/Client)
+        * [Backend](#Backend)
+        * [Database](#Database)
+           * [Schema](#Schema)
+           * [ORM/ODM](#ORM/ODM)
+      * [Testing](#Testing)
+      * [Deployment](#Deployment)
 <!--te-->
 
 ## Project <a name="Project"></a>
