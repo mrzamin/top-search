@@ -31,7 +31,7 @@ For the members only app, user authentication using the Passport Local Strategy 
 
 ## Table of Contents
 <!--ts-->
-   * Project/Product
+   * [Project/Product](#Project/Product)
       * Goals
       * Plans for feature feedback
    * UI/UX
@@ -95,10 +95,24 @@ Located in `views`:
 - [Symbolset](https://symbolset.com/)
 - [goodbooks.io](https://www.goodbooks.io/)
 
-#### Design Logo:
-- [Canva](https://www.canva.com/design/DAGFyETaigg/kAHnBVUu4k918FyfcgyHpg/edit?utm_content=DAGFyETaigg&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+#### Logo - Colors - Fonts:
+- [Logo](https://www.canva.com/design/DAGFyETaigg/kAHnBVUu4k918FyfcgyHpg/edit?utm_content=DAGFyETaigg&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+- Primary: #F7F6F1
+- Secondary: #1F4D8F
+- [Font}(https://fonts.google.com/specimen/Montserrat+Alternates)
 
 ### Plans for design
+- [X] Homepage
+- [X] Admin Dashboard
+- [ ] Detail Pages
+- [ ] List Pages
+- [ ] Sign-up Page
+- [ ] Login Page
+- [ ] Error Page
+
+
+![Screenshot from 2024-05-28 00-07-04](https://github.com/mrzamin/top-search/assets/142754418/e17c9b48-5512-49fd-a08f-086f607f6b22)
+
 
 ## Engineering
 ### Architecture
@@ -180,10 +194,6 @@ Not yet implemented.
 
 
 ## Progress Logs
-
-## Milestones
-
-
 
 | Plugin | README |
 | ------ | ------ |
