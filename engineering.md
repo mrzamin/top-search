@@ -57,10 +57,13 @@ CuratedWeb Database is a simple, mobile-ready, Node.js- and MongoDB- powered web
 
 ## Engineering
 ### Architecture
-I use the Model-View-Controller (MVC) architectural/design framework for separating out my Express application into logical components. The advantage of MVC is that it creates a clear division between the user interface, data store, and application logic. Every type of entry in the database (Resource, Author, Type, and Subject) has its own **model** that holds the data logic of that type of entry. Similarly, each of the various pages of the website are represented and created with a **view**, which is a component that generates the UI with data supplied by the controllers. Finally, my **controllers** are components that get called upon whenever a user makes a GET request to my application. These controllers act as the intermediaries between the models and views; they use the details of the request to determine which view is shown to the user.
+I use the Model-View-Controller (MVC) architectural/design framework for separating out my Express application into logical components. The advantage of MVC is that it creates a clear division between the user interface, data store, and application logic. Every type of entry in the database (Resource, Author, Type, and Subject) has its own **model** that holds the data logic of that type of entry. Similarly, each of the various pages (login form, admin dashboard, resource list) of the website are represented and created with a **view**, which is a component that generates the UI with data supplied by the controllers. Finally, my **controllers** are components that get called upon whenever a user makes a GET request to my application. These controllers act as the intermediaries between the models and views; they use the details of the request to determine which view is shown to the user.
 ### Frontend/Client
-There is no frontend for this web app. I focused purely on the backend concepts that were required for this app -- 
+This is a backend-focused project, so there is no frontend for this app. At the time of writing, I am new to backend development and am therefore focused on backend concepts here. In the future, I very well may want to integrate the Node API for this project with a frontend framework once I am comfortable with combining frontend and backend frameworks effectively. This project purely focuses on the backend concepts: CRUD, HTTP methods, MVC, databases, ORMs, object schema and models, form handling, user authentication, middleware, etc. 
+
 ### Backend
+For my app's backend, the Express Web Framework was chosen due to my familiarity with programming using JavaScript as well as Express's simplification of development processes of Node.js applications. Express is a very popular framework according to [MDN](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Introduction#introducing_express) and is therefore well-supported and well-documented. Additionally, there is an abundance of third-party middleware packages available to Express apps that make the development process easier or better. 
+
 ### Database
 #### Schema
 ### Testing
