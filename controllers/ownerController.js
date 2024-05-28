@@ -85,12 +85,41 @@ exports.owner_create_post = [
 
 // Display Owner delete form on GET.
 exports.owner_delete_get = asyncHandler(async (req, res, next) => {
-  res.send("NOT IMPLEMENTED: Owner delete GET");
+  const [owner, allResourcesByOwner] = await Promise.all([
+    Owner.findById(req.params.id).exec(),
+    ResourceDetail.find({ owner: req.params.id }, "name").exec(),
+  ]);
+
+  if (owner === null) {
+    // No results.
+    res.redirect("/database/authors");
+  }
+
+  res.render("owner_delete", {
+    title: "Delete Author",
+    owner: owner,
+    owner_resources: allResourcesByOwner,
+  });
 });
 
 // Handle Owner delete on POST.
 exports.owner_delete_post = asyncHandler(async (req, res, next) => {
-  res.send("NOT IMPLEMENTED: Owner delete POST");
+  const [owner, allResourcesByOwner] = await Promise.all([
+    Owner.findById(req.params.id).exec(),
+    ResourceDetail.find({ owner: req.params.id }, "name").exec(),
+  ]);
+
+  if (allResourcesByOwner.length > 0) {
+    res.render("owner_delete", {
+      title: "Delete Author",
+      owner: owner,
+      owner_resources: allResourcesByOwner,
+    });
+    return;
+  } else {
+    await Owner.findByIdAndDelete(req.body.ownerid);
+    res.redirect("/database/authors");
+  }
 });
 
 // Display Owner update form on GET.

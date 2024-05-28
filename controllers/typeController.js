@@ -81,12 +81,41 @@ exports.type_create_post = [
 
 // Display Type delete form on GET.
 exports.type_delete_get = asyncHandler(async (req, res, next) => {
-  res.send("NOT IMPLEMENTED: Type delete GET");
+  const [type, allResourcesByType] = await Promise.all([
+    ResourceType.findById(req.params.id).exec(),
+    ResourceDetail.find({ type: req.params.id }, "name").exec(),
+  ]);
+
+  if (type === null) {
+    // No results.
+    res.redirect("/database/types");
+  }
+
+  res.render("type_delete", {
+    title: "Delete Type",
+    type: type,
+    type_resources: allResourcesByType,
+  });
 });
 
 // Handle Genre delete on POST.
 exports.type_delete_post = asyncHandler(async (req, res, next) => {
-  res.send("NOT IMPLEMENTED: Type delete POST");
+  const [type, allResourcesByType] = await Promise.all([
+    ResourceType.findById(req.params.id).exec(),
+    ResourceDetail.find({ type: req.params.id }, "name").exec(),
+  ]);
+
+  if (allResourcesByType.length > 0) {
+    res.render("type_delete", {
+      title: "Delete Type",
+      type: type,
+      type_resources: allResourcesByType,
+    });
+    return;
+  } else {
+    await ResourceType.findByIdAndDelete(req.body.typeid);
+    res.redirect("/database/types");
+  }
 });
 
 // Display Genre update form on GET.

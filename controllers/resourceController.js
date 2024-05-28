@@ -19,6 +19,7 @@ exports.index = asyncHandler(async (req, res, next) => {
     type_count: numTypes,
     owner_count: numOwners,
     course_count: numCourses,
+    user: req.user,
   });
 });
 
@@ -215,7 +216,6 @@ exports.resource_create_post = [
         Owner.find().sort({ owner: 1 }).exec(),
       ]);
 
-      // Mark our selected genres as checked.
       for (const type of allTypes) {
         if (resource.type === type._id) {
           type.checked = "true";
@@ -239,12 +239,22 @@ exports.resource_create_post = [
 
 // Display Resource delete form on GET.
 exports.resource_delete_get = asyncHandler(async (req, res, next) => {
-  res.send("NOT IMPLEMENTED: Resource delete GET");
+  const resource = await ResourceDetail.findById(req.params.id).exec();
+  if (resource === null) {
+    // No results.
+    res.redirect("/database/resources");
+  }
+
+  res.render("resource_delete", {
+    title: "Delete Resource",
+    resource: resource,
+  });
 });
 
 // Handle Resource delete on POST.
 exports.resource_delete_post = asyncHandler(async (req, res, next) => {
-  res.send("NOT IMPLEMENTED: Resource delete POST");
+  await ResourceDetail.findByIdAndDelete(req.body.resourceid);
+  res.redirect("/database/resources");
 });
 
 // Display Author update form on GET.
