@@ -35,7 +35,7 @@ For the members only app, user authentication using the Passport Local Strategy 
       * Goals
       * Plans for feature feedback
    * UI/UX
-      * Research(#stdin)
+      * Research
       * UI/Componentization
       * Design
       * Plans for design feedback
@@ -71,8 +71,27 @@ Nice-to-haves:
 - Gather feedback from Odin Discord
 
 ## UI/UX
-### Research(#stdin)
+
+### Research
+
+This website will be shared with friends, family, and peers who will likely access it for the first time on mobile phones. Hence for this app, I specifically wanted to implement a mobile-first design. It was a good opportunity to practicing doing it with vanilla CSS and HTML, given that this is a backend-focused project where the UI styles are intentionally simplistic. The site does not have much reactive complexity; the values are plugged server-side into a template to serve the HTML to the client. I have previous experience with responsive design, but not mobile-first, so I decided to research it. The mobile-first approach simply means coding the website with mobile screen sizes in mind at the start. Media queries are used to achieve this.
+
 ### UI/Componentization
+
+Located in `views`:
+
+- `admin_dashboard.pug`: Admin Dashboard with data summary and quick links
+- `*_detail.pug`: Detail View for an item (resource, author)
+- `*_list.pug`: List View for an item (resource, author, type, subject)
+- `*_form.pug`: Create Form for an item (resource, author, type, subject)
+- `*_delete.pug`: Delete Form for an item (resource, author, type, subject)
+-  `user_create_form.pug`: Register Form for users and admins
+-  `user_login_form.pug`: Login Form for users and admins
+-  `index.pug`: Homepage
+-  `error.pug`: Errorpage
+
+- **Context.jsx**: Context API Provider component for the store
+- **main.jsx**: Entry point for the React app; contains the Router Provider component
 ### Design
 ### Plans for design feedback
 
