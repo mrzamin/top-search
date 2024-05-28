@@ -1,24 +1,8 @@
 ## _Engineering Documentation for:_
 # CurateWeb
 
-
-[![N|Solid](https://cldup.com/dTxpPi9lDf.thumb.png)](https://nodesource.com/products/nsolid)
-
-[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
-
 CuratedWeb Database is a simple, mobile-ready, Node.js- and MongoDB- powered web app featuring a curated collection of free online materials for learning web development from scratch.
 
-- Access collections of resources grouped by topic, type, and owner
-- Contribute to the database in realtime
-- Develop in-demand skills
-
-> The overriding design goal for Markdown's
-> formatting syntax is to make it as readable
-> as possible. The idea is that a
-> Markdown-formatted document should be
-> publishable as-is, as plain text, without
-> looking like it's been marked up with tags
-> or formatting instructions.
 
 ## Rationale
 
@@ -41,6 +25,7 @@ CuratedWeb Database is a simple, mobile-ready, Node.js- and MongoDB- powered web
         * Backend
         * Database
            * Schema
+           * ORM/ODM
       * Testing
       * Deployment
 <!--te-->
@@ -57,7 +42,9 @@ CuratedWeb Database is a simple, mobile-ready, Node.js- and MongoDB- powered web
 
 ## Engineering
 ### Architecture
-I use the Model-View-Controller (MVC) architectural/design framework for separating out my Express application into logical components. The advantage of MVC is that it creates a clear division between the user interface, data store, and application logic. Every type of entry in the database (Resource, Author, Type, and Subject) has its own **model** that holds the data logic of that type of entry. Similarly, each of the various pages (login form, admin dashboard, resource list) of the website are represented and created with a **view**, which is a component that generates the UI with data supplied by the controllers. Finally, my **controllers** are components that get called upon whenever a user makes a GET request to my application. These controllers act as the intermediaries between the models and views; they use the details of the request to determine which view is shown to the user.
+I use the Model-View-Controller (MVC) architectural/design framework for separating out my Express application into logical components. The advantage of MVC is that it creates a clear division between the user interface, data store, and application logic. Every type of entry in the database (Resource, Author, Type, and Subject) has its own **model** that holds the data logic of that type of entry. Similarly, each of the various pages (login form, admin dashboard, resource list, etc. ) of the website are represented and created with a **view**: a component that generates the UI with data supplied by the controllers. Finally, my **controllers** are components that get called upon whenever a user makes a GET request to my application. These controllers act as the intermediaries between the models and views; they use the details of the request to determine which view is shown to the user.
+
+Other advantages of MVC for software development include reusability, scalability, and testability.
 ### Frontend/Client
 This is a backend-focused project, so there is no frontend for this app. At the time of writing, I am new to backend development and am therefore focused on backend concepts here. In the future, I very well may want to integrate the Node API for this project with a frontend framework once I am comfortable with combining frontend and backend frameworks effectively. This project purely focuses on the backend concepts: CRUD, HTTP methods, MVC, databases, ORMs, object schema and models, form handling, user authentication, middleware, etc. 
 
@@ -65,9 +52,27 @@ This is a backend-focused project, so there is no frontend for this app. At the 
 For my app's backend, the Express Web Framework was chosen due to my familiarity with programming using JavaScript as well as Express's simplification of development processes of Node.js applications. Express is a very popular framework according to [MDN](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Introduction#introducing_express) and is therefore well-supported and well-documented. Additionally, there is an abundance of third-party middleware packages available to Express apps that make the development process easier or better. 
 
 ### Database
-#### Schema
+When it comes to choosing databases, the general idea is to choose the best fit for whatever you are working on. My application has several models: Resource, Author, Type, and Subject. Authors, types, and subjects can have multiple resources, and resources can have multiple subjects. My database choice therefore has to model **many-to-many** relationships, for which a SQL database would be a good choice. However, this app uses a NoSQL database, MongoDB, since I'm following [The Odin Project's learning path](https://www.theodinproject.com/paths/full-stack-javascript/courses/nodejs) where MongoDB is used. 
+
+For a small-to-medium app like this one, the choice to use MongoDB is acceptable and provides an opportunity to learn about NoSQL databases, specifically document stores. However, a relational database like MySQL or PostgreSQL would have been a better fit. 
+
+### Schema
+#### Database Models 
+The intitial plan for the database models is below. (A User model was added later to accommodate user login and authentication.)
+![database-models](https://github.com/mrzamin/top-search/assets/142754418/5c2a5c2c-4da3-416e-8eb2-915bd8371b26)
+
+#### User Model
+![Screenshot from 2024-05-27 21-05-43](https://github.com/mrzamin/top-search/assets/142754418/1e490874-bdba-45ee-8eb9-628ffafe3fd7)
+
+
+#### ORM/ODM
+Mongoose, an object modeling tool (ODM) for MongoDB, is used to map the JavaScript objects in my code to the underlying database. It helps me focus on implementing my application features rather than database semantics.
+
+#### 
 ### Testing
+Not yet implemented.
 ### Deployment
+Not yet implemented.
 
 - Import a HTML file and watch it magically convert to Markdown
 - Drag and drop images (requires your Dropbox account be linked)
