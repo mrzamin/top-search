@@ -49,7 +49,7 @@ For the members only app, user authentication using the Passport Local Strategy 
       * [Testing](#Testing)
       * [Deployment](#Deployment)
   * [Tech](#Tech)
-  * [Progress Logs](#Progress-logs)
+
 <!--te-->
 
 ## Project
@@ -195,19 +195,6 @@ Not yet implemented.
   - pug
   - validator
 
-
-
-## Progress Logs
-
-| Plugin | README |
-| ------ | ------ |
-| Languages |  |
-| Web Framework | Express |
-| UI Library | N/A |
-| Styling | Global stylesheet |
-| Build Tool | |
-| Deployment | |
-| Dependencies |  
 
 
 
