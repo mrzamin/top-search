@@ -101,7 +101,7 @@ Located in `views`:
 - Secondary: #1F4D8F
 - [Font}(https://fonts.google.com/specimen/Montserrat+Alternates)
 
-### Plans for design
+### Page Design
 - [X] Homepage
 - [X] Admin Dashboard
 - [ ] Detail Pages
