@@ -76,7 +76,7 @@ Nice-to-haves:
 
 ### Research
 
-This website will be distributed with friends, family, and peers who will likely access it for the first time on mobile phones. Hence for this app, I specifically wanted to implement a mobile-first design. It was a good opportunity to practicing doing it with vanilla CSS and HTML, given that this is a backend-focused project where the UI styles are intentionally simplistic. The site does not have much reactive complexity; the values are plugged server-side into a template to serve the HTML to the client. I have previous experience with responsive design, but not mobile-first, so I decided to research it. The mobile-first approach simply means coding the website with mobile screen sizes in mind at the start. Media queries are used to achieve this.
+This website will be distributed with friends, family, and peers, who will likely access it for the first time on mobile phones. Hence, I specifically wanted to implement a mobile-first design. It was a good opportunity to implement that with vanilla CSS and HTML, given that this is a backend-focused project where the UI styles are intentionally simplistic. The site does not have much reactive complexity; the values are plugged server-side into a template to serve the HTML to the client. I have previous experience with responsive design, but not mobile-first, so I decided to research it. The mobile-first approach simply means coding the website with mobile screen sizes in mind at the start. Media queries are used to achieve this.
 
 ### Componentization
 
