@@ -31,14 +31,14 @@ For the members only app, user authentication using the Passport Local Strategy 
 
 ## Table of Contents
 <!--ts-->
-   * [Project/Product](#Project/Product)
-      * Goals
-      * Plans for feature feedback
-   * UI/UX
-      * Research
-      * UI/Componentization
-      * Design
-      * Plans for design 
+   * [Project](#Project)
+      * [Goals](#Goals)
+      * [Plans for feature feedback](#plans-for-feature-feedback)
+   * [UI/UX](#ui/ux)
+      * [Research](#research)
+      * [UI/Componentization](#UI/Componentization)
+      * [Design](#Design)
+      * [Page design](#page-design)
    * Engineering
      * Architecture
         * Frontend/Client
@@ -50,7 +50,7 @@ For the members only app, user authentication using the Passport Local Strategy 
       * Deployment
 <!--te-->
 
-## Project/Product
+## Project <a name="Project"></a>
 ### Goals
 MVP:
 - Visitors can view lists and detailed views of resources, authors, types
