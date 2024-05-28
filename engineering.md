@@ -101,7 +101,7 @@ Located in `views`:
 - [Logo](https://www.canva.com/design/DAGFyETaigg/kAHnBVUu4k918FyfcgyHpg/edit?utm_content=DAGFyETaigg&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 - Primary: #F7F6F1
 - Secondary: #1F4D8F
-- [Font}(https://fonts.google.com/specimen/Montserrat+Alternates)
+- [Font](https://fonts.google.com/specimen/Montserrat+Alternates)
 
 ### Page Design
 - [X] Homepage
