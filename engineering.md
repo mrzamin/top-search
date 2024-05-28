@@ -48,8 +48,8 @@ For the members only app, user authentication using the Passport Local Strategy 
            * [ODM](#ODM)
       * [Testing](#Testing)
       * [Deployment](#Deployment)
-    * [Tech](#Tech)
-    *[Progress Logs](#Progress-logs)
+  * [Tech](#Tech)
+  * [Progress Logs](#Progress-logs)
 <!--te-->
 
 ## Project
