@@ -80,7 +80,7 @@ This website will be distributed with friends, family, and peers, who will likel
 
 ### Componentization
 
-I chose Pug as my template engine of choice over others -- like EJS -- due to their concise and intuitive indentation. 
+I chose Pug as my template engine of choice over others -- like EJS -- due to its concise and intuitive indentation. 
 
 Located in `views`:
 
