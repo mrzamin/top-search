@@ -1,9 +1,19 @@
-var express = require('express');
-var router = express.Router();
+const express = require("express");
+const router = express.Router();
+const passport = require("passport");
+const user_controller = require("../controllers/userController");
+const loginValidate = require("../lib/sanitization");
+const isAdmin = require("../controllers/userController").isAdmin;
+router.get("/signup", user_controller.user_create_get);
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+router.post("/signup", user_controller.user_create_post);
+
+router.get("/login", user_controller.user_login_get);
+
+router.post("/login", user_controller.user_login_post);
+
+router.get("/logout", user_controller.user_logout_get);
+
+router.get("/admin", isAdmin, user_controller.admin_dashboard_get);
 
 module.exports = router;

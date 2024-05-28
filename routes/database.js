@@ -63,10 +63,10 @@ router.get("/author/create", owner_controller.owner_create_get);
 router.post("/author/create", owner_controller.owner_create_post);
 
 // GET request to delete Owner.
-router.get("/owner/:id/delete", owner_controller.owner_delete_get);
+router.get("/author/:id/delete", owner_controller.owner_delete_get);
 
 // POST request to delete Owner.
-router.post("/owner/:id/delete", owner_controller.owner_delete_post);
+router.post("/author/:id/delete", owner_controller.owner_delete_post);
 
 // GET request to update Owner.
 router.get("/owner/:id/update", owner_controller.owner_update_get);
