@@ -1,14 +1,35 @@
 ## _Engineering Documentation for:_
 # CurateWeb
 
-CuratedWeb Database is a simple, mobile-ready, Node.js- and MongoDB- powered web app featuring a curated collection of free online materials for learning web development from scratch.
+CurateWeb Database is a simple, mobile-ready, Node.js- and MongoDB- powered web app featuring a curated collection of free online materials for learning web development.
+![Screenshot from 2024-05-27 21-31-42](https://github.com/mrzamin/top-search/assets/142754418/225db719-22c1-4d62-b1ce-9580972e9774)
 
 
 ## Rationale
+With my new-found knowledge of server-side rendering and routing, I thought I'd take my homework of creating a [basic app](https://www.theodinproject.com/lessons/nodejs-members-only) one step further and create something useful and meaningful. While [The Odin Project resources](https://www.theodinproject.com/) have been great for learning full-stack web development, the curriculum is by no means a one-size-fits-all or comprehesive deal, and I frequently found myself having to fill in small and large gaps with resources outside of their curriculum. Why not build something for others that shares some hidden web development gems I've uncovered? 
+
+The mission of this app is to serve people with a simple, convenient, and curated database containing links to current and relevant web development resources. It will contain the best external resources I've used in addition to The Odin Project resources. Given the CRUD project requirements noted in the Background section below, non-logged in guests visiting the site will also be able to add resources to the database. 
+
+The website will also exist to address a current problem of The Odin Project's website: **the lack of search feature**. Their curriculum is large, and I often found myself wanting to reference an article/video/documentation from weeks or months ago... but I couldn't remember in which lesson it was or even the name it had. A quick Google search using key words was often faster than trying to go through the long Odin lessons to find it. Hence, I plan to implement text search into this app. The full list of planned features is below. 
 
 ## Background
+This project effectively combines two smaller backend projects (the [inventory app](https://www.theodinproject.com/lessons/nodejs-inventory-application) and [members only app](https://www.theodinproject.com/lessons/nodejs-members-only)) from The Odin Project into one larger one for quality over quantity. 
+
+For the inventory app, the designated learning outcomes are:
+- Express App basics
+-  CRUD and HTTP
+-  MVC (routes, controllers, view template engines)
+-  Handling forms
+-  Deployment with a PaaS
+
+For the members only app, user authentication using the Passport Local Strategy and security configuration via environment variables are added to the list of requirements. 
+
 ## Terminology
 ## Non-Goals
+Non-logged in guests visiting the site will not be able to remove or update items in the database. Only the Admin User/Website Owner will be able to update and delete resources, add new subjects, and add new resource types. 
+
+This is a backend-based project that will not have a frontend. In the future, I may integrate the Node API for this project with a frontend framework once I am comfortable with combining frontend and backend frameworks effectively. For now, this project purely focuses on the backend concepts.
+
 ## Table of Contents
 <!--ts-->
    * Project/Product
@@ -46,7 +67,7 @@ I use the Model-View-Controller (MVC) architectural/design framework for separat
 
 Other advantages of MVC for software development include reusability, scalability, and testability.
 ### Frontend/Client
-This is a backend-focused project, so there is no frontend for this app. At the time of writing, I am new to backend development and am therefore focused on backend concepts here. In the future, I very well may want to integrate the Node API for this project with a frontend framework once I am comfortable with combining frontend and backend frameworks effectively. This project purely focuses on the backend concepts: CRUD, HTTP methods, MVC, databases, ORMs, object schema and models, form handling, user authentication, middleware, etc. 
+This is a backend-focused project, so there is no frontend for this app. At the time of writing, I am new to backend development and am therefore focused on backend concepts here. 
 
 ### Backend
 For my app's backend, the Express Web Framework was chosen due to my familiarity with programming using JavaScript as well as Express's simplification of development processes of Node.js applications. Express is a very popular framework according to [MDN](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Introduction#introducing_express) and is therefore well-supported and well-documented. Additionally, there is an abundance of third-party middleware packages available to Express apps that make the development process easier or better. 
@@ -66,7 +87,19 @@ The intitial plan for the database models is below. (A User model was added late
 
 
 #### ORM/ODM
-Mongoose, an object modeling tool (ODM) for MongoDB, is used to map the JavaScript objects in my code to the underlying database. It helps me focus on implementing my application features rather than database semantics.
+Mongoose, an object modeling tool (ODM) for MongoDB, is used to map the JavaScript objects in my code to the underlying database. It helps me focus on implementing my application features rather than database semantics:
+
+```sh
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+const UserSchema = new Schema({
+  username: { type: String, required: true },
+  password: { type: String, required: true },
+  admin: Boolean,
+});
+module.exports = mongoose.model("User", UserSchema);
+
+```
 
 #### 
 ### Testing
@@ -74,78 +107,51 @@ Not yet implemented.
 ### Deployment
 Not yet implemented.
 
-- Import a HTML file and watch it magically convert to Markdown
-- Drag and drop images (requires your Dropbox account be linked)
-- Import and save files from GitHub, Dropbox, Google Drive and One Drive
-- Drag and drop markdown and HTML files into Dillinger
-- Export documents as Markdown, HTML and PDF
-
-Markdown is a lightweight markup language based on the formatting conventions
-that people naturally use in email.
-As [John Gruber] writes on the [Markdown site][df1]
-
-> The overriding design goal for Markdown's
-> formatting syntax is to make it as readable
-> as possible. The idea is that a
-> Markdown-formatted document should be
-> publishable as-is, as plain text, without
-> looking like it's been marked up with tags
-> or formatting instructions.
-
 ## Tech
 
-Dillinger uses a number of open source projects to work properly:
 
-- [AngularJS] - HTML enhanced for web apps!
-- [Ace Editor] - awesome web-based text editor
-- [markdown-it] - Markdown parser done right. Fast and easy to extend.
-- [Twitter Bootstrap] - great UI boilerplate for modern web apps
-- [node.js] - evented I/O for the backend
-- [Express] - fast node.js network app framework [@tjholowaychuk]
-- [Gulp] - the streaming build system
-- [Breakdance](https://breakdance.github.io/breakdance/) - HTML
-to Markdown converter
-- [jQuery] - duh
 
 ## Progress Logs
 
 ## Milestones
 
-And of course Dillinger itself is open source with a [public repository][dill]
- on GitHub.
 
-## Installation
-
-Dillinger requires [Node.js](https://nodejs.org/) v10+ to run.
-
-Install the dependencies and devDependencies and start the server.
-
-```sh
-cd dillinger
-npm i
-node app
-```
-
-For production environments...
-
-```sh
-npm install --production
-NODE_ENV=production node app
-```
-
-## Plugins
-
-Dillinger is currently extended with the following plugins.
-Instructions on how to use them in your own application are linked below.
 
 | Plugin | README |
 | ------ | ------ |
-| Dropbox | [plugins/dropbox/README.md][PlDb] |
-| GitHub | [plugins/github/README.md][PlGh] |
-| Google Drive | [plugins/googledrive/README.md][PlGd] |
-| OneDrive | [plugins/onedrive/README.md][PlOd] |
-| Medium | [plugins/medium/README.md][PlMe] |
-| Google Analytics | [plugins/googleanalytics/README.md][PlGa] |
+| Languages |  |
+| Web Framework | Express |
+| UI Library | N/A |
+| Styling | Global stylesheet |
+| Build Tool | |
+| Deployment | |
+| Dependencies |  
+
+
+
+- Languages: Node.js, HTML, and CSS
+- Web Framework: Express
+- UI Library: N/A
+- Styling: Global stylesheet
+- Build Tool:
+- Deployment:
+- Dependencies:
+- - bcryptjs
+  - connect-mongo
+  - cookie-parser
+  - debug
+  - dotenv
+  - express
+  - express-async-handler
+  - express-session
+  - express-validator
+  - http-errors
+  - mongoose
+  - morgan
+  - passport
+  - passport-local
+  - pug
+  - validator|
 
 ## Development
 
@@ -196,10 +202,7 @@ By default, the Docker will expose port 8080, so change this within the
 Dockerfile if necessary. When ready, simply use the Dockerfile to
 build the image.
 
-```sh
-cd dillinger
-docker build -t <youruser>/dillinger:${package.json.version} .
-```
+
 
 This will create the dillinger image and pull in the necessary dependencies.
 Be sure to swap out `${package.json.version}` with the actual
