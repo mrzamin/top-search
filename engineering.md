@@ -38,7 +38,7 @@ For the members only app, user authentication using the Passport Local Strategy 
       * Research
       * UI/Componentization
       * Design
-      * Plans for design feedback
+      * Plans for design 
    * Engineering
      * Architecture
         * Frontend/Client
@@ -74,7 +74,7 @@ Nice-to-haves:
 
 ### Research
 
-This website will be shared with friends, family, and peers who will likely access it for the first time on mobile phones. Hence for this app, I specifically wanted to implement a mobile-first design. It was a good opportunity to practicing doing it with vanilla CSS and HTML, given that this is a backend-focused project where the UI styles are intentionally simplistic. The site does not have much reactive complexity; the values are plugged server-side into a template to serve the HTML to the client. I have previous experience with responsive design, but not mobile-first, so I decided to research it. The mobile-first approach simply means coding the website with mobile screen sizes in mind at the start. Media queries are used to achieve this.
+This website will be distributed with friends, family, and peers who will likely access it for the first time on mobile phones. Hence for this app, I specifically wanted to implement a mobile-first design. It was a good opportunity to practicing doing it with vanilla CSS and HTML, given that this is a backend-focused project where the UI styles are intentionally simplistic. The site does not have much reactive complexity; the values are plugged server-side into a template to serve the HTML to the client. I have previous experience with responsive design, but not mobile-first, so I decided to research it. The mobile-first approach simply means coding the website with mobile screen sizes in mind at the start. Media queries are used to achieve this.
 
 ### UI/Componentization
 
@@ -90,10 +90,15 @@ Located in `views`:
 -  `index.pug`: Homepage
 -  `error.pug`: Errorpage
 
-- **Context.jsx**: Context API Provider component for the store
-- **main.jsx**: Entry point for the React app; contains the Router Provider component
 ### Design
-### Plans for design feedback
+#### Inspiration:
+- [Symbolset](https://symbolset.com/)
+- [goodbooks.io](https://www.goodbooks.io/)
+
+#### Design Logo:
+- [Canva](https://www.canva.com/design/DAGFyETaigg/kAHnBVUu4k918FyfcgyHpg/edit?utm_content=DAGFyETaigg&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+
+### Plans for design
 
 ## Engineering
 ### Architecture
@@ -112,6 +117,11 @@ When it comes to choosing databases, the general idea is to choose the best fit 
 For a small-to-medium app like this one, the choice to use MongoDB is acceptable and provides an opportunity to learn about NoSQL databases, specifically document stores. However, a relational database like MySQL or PostgreSQL would have been a better fit. 
 
 ### Schema
+- Think about data I need to store and the relationships between the different objects
+   - subject, author, resource, and type of material it is
+- Have a separate model for every “object” — group of related information
+- Diagram that shows the relationship between the models and their multiplicities
+
 #### Database Models 
 The intitial plan for the database models is below. (A User model was added later to accommodate user login and authentication.)
 ![database-models](https://github.com/mrzamin/top-search/assets/142754418/5c2a5c2c-4da3-416e-8eb2-915bd8371b26)
