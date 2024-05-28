@@ -34,18 +34,18 @@ For the members only app, user authentication using the Passport Local Strategy 
    * [Project](#Project)
       * [Goals](#Goals)
       * [Plans for feature feedback](#plans-for-feature-feedback)
-   * [UI/UX](#ui/ux)
-      * [Research](#research)
-      * [UI/Componentization](#UI/Componentization)
+   * [UI](#ui)
+      * [Research](#Research)
+      * [Componentization](#Componentization)
       * [Design](#Design)
-      * [Page design](#page-design)
-   * [Engineering](#engineering)
+      * [Page design](#Page-design)
+   * [Engineering](#Engineering)
      * [Architecture](#Architecture)
-        * [Frontend/Client](#Frontend/Client)
+        * [Frontend](#Frontend/Client)
         * [Backend](#Backend)
         * [Database](#Database)
            * [Schema](#Schema)
-           * [ORM/ODM](#ORM/ODM)
+           * [ODM](#ODM)
       * [Testing](#Testing)
       * [Deployment](#Deployment)
 <!--te-->
@@ -70,13 +70,13 @@ Nice-to-haves:
 - Gather feedback from Kan
 - Gather feedback from Odin Discord
 
-## UI/UX
+## UI
 
 ### Research
 
 This website will be distributed with friends, family, and peers who will likely access it for the first time on mobile phones. Hence for this app, I specifically wanted to implement a mobile-first design. It was a good opportunity to practicing doing it with vanilla CSS and HTML, given that this is a backend-focused project where the UI styles are intentionally simplistic. The site does not have much reactive complexity; the values are plugged server-side into a template to serve the HTML to the client. I have previous experience with responsive design, but not mobile-first, so I decided to research it. The mobile-first approach simply means coding the website with mobile screen sizes in mind at the start. Media queries are used to achieve this.
 
-### UI/Componentization
+### UI
 
 Located in `views`:
 
@@ -119,7 +119,8 @@ Located in `views`:
 I use the Model-View-Controller (MVC) architectural/design framework for separating out my Express application into logical components. The advantage of MVC is that it creates a clear division between the user interface, data store, and application logic. Every type of entry in the database (Resource, Author, Type, and Subject) has its own **model** that holds the data logic of that type of entry. Similarly, each of the various pages (login form, admin dashboard, resource list, etc. ) of the website are represented and created with a **view**: a component that generates the UI with data supplied by the controllers. Finally, my **controllers** are components that get called upon whenever a user makes a GET request to my application. These controllers act as the intermediaries between the models and views; they use the details of the request to determine which view is shown to the user.
 
 Other advantages of MVC for software development include reusability, scalability, and testability.
-### Frontend/Client
+
+### Frontend
 This is a backend-focused project, so there is no frontend for this app. At the time of writing, I am new to backend development and am therefore focused on backend concepts here. 
 
 ### Backend
@@ -144,7 +145,7 @@ The intitial plan for the database models is below. (A User model was added late
 ![Screenshot from 2024-05-27 21-05-43](https://github.com/mrzamin/top-search/assets/142754418/1e490874-bdba-45ee-8eb9-628ffafe3fd7)
 
 
-#### ORM/ODM
+#### ODM
 Mongoose, an object modeling tool (ODM) for MongoDB, is used to map the JavaScript objects in my code to the underlying database. It helps me focus on implementing my application features rather than database semantics:
 
 ```sh
@@ -159,14 +160,13 @@ module.exports = mongoose.model("User", UserSchema);
 
 ```
 
-#### 
 ### Testing
 Not yet implemented.
+
 ### Deployment
 Not yet implemented.
 
 ## Tech
-
 - Languages: Node.js, HTML, and CSS
 - Web Framework: Express
 - UI Library: N/A
