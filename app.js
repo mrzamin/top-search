@@ -20,14 +20,7 @@ const app = express();
  * -------------- Connect to database ----------------
  */
 require("./config/database");
-// const mongoose = require("mongoose");
-// mongoose.set("strictQuery", false);
-// const mongoDB =
-//   "mongodb+srv://marisaminard:topresource@top-database.zxr2rrg.mongodb.net/test?retryWrites=true&w=majority&appName=top-database";
-// main().catch((err) => console.log(err));
-// async function main() {
-//   await mongoose.connect(mongoDB);
-// }
+
 
 /**
  * -------------- General setup ----------------
@@ -39,9 +32,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-/**
- * -------------- SESSIONS ----------------
- */
 
 /**
  * -------------- PASSPORT AUTHENTICATION ----------------
