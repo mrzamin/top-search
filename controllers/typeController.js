@@ -50,7 +50,6 @@ exports.type_create_post = [
     // Extract the validation errors from a request.
     const errors = validationResult(req);
 
-    // Create a genre object with escaped and trimmed data.
     const type = new ResourceType({ type: req.body.type });
 
     if (!errors.isEmpty()) {
@@ -62,17 +61,13 @@ exports.type_create_post = [
       });
       return;
     } else {
-      // Data from form is valid.
-      // Check if Genre with same name already exists.
       const typeExists = await ResourceType.findOne({ type: req.body.type })
         .collation({ locale: "en", strength: 2 })
         .exec();
       if (typeExists) {
-        // Genre exists, redirect to its detail page.
         res.redirect(typeExists.url);
       } else {
         await type.save();
-        // New genre saved. Redirect to genre detail page.
         res.redirect(type.url);
       }
     }
@@ -98,7 +93,6 @@ exports.type_delete_get = asyncHandler(async (req, res, next) => {
   });
 });
 
-// Handle Genre delete on POST.
 exports.type_delete_post = asyncHandler(async (req, res, next) => {
   const [type, allResourcesByType] = await Promise.all([
     ResourceType.findById(req.params.id).exec(),
@@ -118,12 +112,10 @@ exports.type_delete_post = asyncHandler(async (req, res, next) => {
   }
 });
 
-// Display Genre update form on GET.
 exports.type_update_get = asyncHandler(async (req, res, next) => {
   res.send("NOT IMPLEMENTED: Type update GET");
 });
 
-// Handle Genre update on POST.
 exports.type_update_post = asyncHandler(async (req, res, next) => {
   res.send("NOT IMPLEMENTED: Type update POST");
 });
