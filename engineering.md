@@ -24,11 +24,10 @@ For the inventory app, the designated learning outcomes are:
 
 For the members only app, user authentication using the Passport Local Strategy and security configuration via environment variables are added to the list of requirements. 
 
-## Terminology
 ## Non-Goals
-Non-logged in guests visiting the site will not be able to remove or update items in the database. Only the Admin User/Website Owner will be able to update and delete resources, add new subjects, and add new resource types. 
+- Non-logged in guests visiting the site will not be able to remove or update items in the database. Only the Admin User/Website Owner will be able to update and delete resources, add new subjects, or add new resource types. 
 
-This is a backend-based project that will not have a frontend. In the future, I may integrate the Node API for this project with a frontend framework once I am comfortable with combining frontend and backend frameworks effectively. For now, this project purely focuses on the backend concepts.
+- This is a backend-based project that will not have a frontend. In the future, I may integrate the Node API for this project with a frontend framework once I am comfortable with combining frontend and backend frameworks effectively. For now, this project purely focuses on the backend concepts.
 
 ## Table of Contents
 <!--ts-->
@@ -53,7 +52,23 @@ This is a backend-based project that will not have a frontend. In the future, I 
 
 ## Project/Product
 ### Goals
+MVP:
+- Visitors can view lists and detailed views of resources, authors, types
+- Vistors can add new resources to the database
+- Vistors can click a URL link to navigate to the external resource (article, documentation, video, etc.)
+- Admin users can add, remove, update, and delete items from the database
+- Admin users can access an admin dashboard with a data collection summary
+- Users can quickly reference a resource using text search
+
+Nice-to-haves:
+- Resource voting/rankings (potentially using a third-party package)
+- Resource comments section
+- Users must login to leave a comment and view all comments
+- Frontend integration
+  
 ### Plans for feature feedback
+- Gather feedback from Kan
+- Gather feedback from Odin Discord
 
 ## UI/UX
 ### Research(#stdin)
@@ -109,6 +124,30 @@ Not yet implemented.
 
 ## Tech
 
+- Languages: Node.js, HTML, and CSS
+- Web Framework: Express
+- UI Library: N/A
+- Styling: Global stylesheet
+- Build Tool:
+- Deployment:
+- Dependencies/middlewares:
+  - bcryptjs
+  - connect-mongo
+  - cookie-parser
+  - debug
+  - dotenv
+  - express
+  - express-async-handler
+  - express-session
+  - express-validator
+  - http-errors
+  - mongoose
+  - morgan
+  - passport
+  - passport-local
+  - pug
+  - validator
+
 
 
 ## Progress Logs
@@ -129,127 +168,10 @@ Not yet implemented.
 
 
 
-- Languages: Node.js, HTML, and CSS
-- Web Framework: Express
-- UI Library: N/A
-- Styling: Global stylesheet
-- Build Tool:
-- Deployment:
-- Dependencies:
-- - bcryptjs
-  - connect-mongo
-  - cookie-parser
-  - debug
-  - dotenv
-  - express
-  - express-async-handler
-  - express-session
-  - express-validator
-  - http-errors
-  - mongoose
-  - morgan
-  - passport
-  - passport-local
-  - pug
-  - validator|
-
-## Development
-
-Want to contribute? Great!
-
-Dillinger uses Gulp + Webpack for fast developing.
-Make a change in your file and instantaneously see your updates!
-
-Open your favorite Terminal and run these commands.
-
-First Tab:
-
-```sh
-node app
-```
-
-Second Tab:
-
-```sh
-gulp watch
-```
-
-(optional) Third:
-
-```sh
-karma test
-```
-
-#### Building for source
-
-For production release:
-
-```sh
-gulp build --prod
-```
-
-Generating pre-built zip archives for distribution:
-
-```sh
-gulp build dist --prod
-```
-
-## Docker
-
-Dillinger is very easy to install and deploy in a Docker container.
-
-By default, the Docker will expose port 8080, so change this within the
-Dockerfile if necessary. When ready, simply use the Dockerfile to
-build the image.
 
 
 
-This will create the dillinger image and pull in the necessary dependencies.
-Be sure to swap out `${package.json.version}` with the actual
-version of Dillinger.
 
-Once done, run the Docker image and map the port to whatever you wish on
-your host. In this example, we simply map port 8000 of the host to
-port 8080 of the Docker (or whatever port was exposed in the Dockerfile):
 
-```sh
-docker run -d -p 8000:8080 --restart=always --cap-add=SYS_ADMIN --name=dillinger <youruser>/dillinger:${package.json.version}
-```
 
-> Note: `--capt-add=SYS-ADMIN` is required for PDF rendering.
 
-Verify the deployment by navigating to your server address in
-your preferred browser.
-
-```sh
-127.0.0.1:8000
-```
-
-## License
-
-MIT
-
-**Free Software, Hell Yeah!**
-
-[//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
-
-   [dill]: <https://github.com/joemccann/dillinger>
-   [git-repo-url]: <https://github.com/joemccann/dillinger.git>
-   [john gruber]: <http://daringfireball.net>
-   [df1]: <http://daringfireball.net/projects/markdown/>
-   [markdown-it]: <https://github.com/markdown-it/markdown-it>
-   [Ace Editor]: <http://ace.ajax.org>
-   [node.js]: <http://nodejs.org>
-   [Twitter Bootstrap]: <http://twitter.github.com/bootstrap/>
-   [jQuery]: <http://jquery.com>
-   [@tjholowaychuk]: <http://twitter.com/tjholowaychuk>
-   [express]: <http://expressjs.com>
-   [AngularJS]: <http://angularjs.org>
-   [Gulp]: <http://gulpjs.com>
-
-   [PlDb]: <https://github.com/joemccann/dillinger/tree/master/plugins/dropbox/README.md>
-   [PlGh]: <https://github.com/joemccann/dillinger/tree/master/plugins/github/README.md>
-   [PlGd]: <https://github.com/joemccann/dillinger/tree/master/plugins/googledrive/README.md>
-   [PlOd]: <https://github.com/joemccann/dillinger/tree/master/plugins/onedrive/README.md>
-   [PlMe]: <https://github.com/joemccann/dillinger/tree/master/plugins/medium/README.md>
-   [PlGa]: <https://github.com/RahulHP/dillinger/blob/master/plugins/googleanalytics/README.md>
