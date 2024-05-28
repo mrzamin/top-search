@@ -12,10 +12,6 @@ exports.owner_list = asyncHandler(async (req, res, next) => {
   });
 });
 
-// exports.search = asyncHandler(async (req, res, next) => {
-
-//   await Owner.find()
-// });
 
 // Display detail page for a specific Owner.
 exports.owner_detail = asyncHandler(async (req, res, next) => {
@@ -54,7 +50,6 @@ exports.owner_create_post = [
     // Extract the validation errors from a request.
     const errors = validationResult(req);
 
-    // Create a genre object with escaped and trimmed data.
     const owner = new Owner({ owner: req.body.owner });
 
     if (!errors.isEmpty()) {
@@ -66,17 +61,14 @@ exports.owner_create_post = [
       });
       return;
     } else {
-      // Data from form is valid.
-      // Check if Genre with same name already exists.
+      
       const ownerExists = await Owner.findOne({ type: req.body.owner })
         .collation({ locale: "en", strength: 2 })
         .exec();
       if (ownerExists) {
-        // Genre exists, redirect to its detail page.
         res.redirect(ownerExists.url);
       } else {
         await owner.save();
-        // New genre saved. Redirect to genre detail page.
         res.redirect(owner.url);
       }
     }
