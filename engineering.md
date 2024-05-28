@@ -13,7 +13,7 @@ The mission of this app is to serve people with a simple, convenient, and curate
 The website will also exist to address a current problem of The Odin Project's website: **the lack of search feature**. Their curriculum is large, and I often found myself wanting to reference an article/video/documentation from weeks or months ago... but I couldn't remember in which lesson it was or even the name it had. A quick Google search using key words was often faster than trying to go through the long Odin lessons to find it. Hence, I plan to implement text search into this app. The full list of [planned features](#Goals) is below. 
 
 ## Background
-This project effectively combines two smaller backend projects (the [inventory app](https://www.theodinproject.com/lessons/nodejs-inventory-application) and [members only app](https://www.theodinproject.com/lessons/nodejs-members-only)) from The Odin Project into one larger one for quality over quantity. 
+This project effectively combines two smaller backend projects (the [inventory app](https://www.theodinproject.com/lessons/nodejs-inventory-application) and [members only app](https://www.theodinproject.com/lessons/nodejs-members-only)) from The Odin Project into one larger one. Quality over quantity!
 
 For the inventory app, the designated learning outcomes are:
 - Express App basics
