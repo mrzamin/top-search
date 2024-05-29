@@ -3,8 +3,8 @@ const ResourceDetail = require("../models/resourceDetail");
 const asyncHandler = require("express-async-handler");
 const { body, validationResult } = require("express-validator");
 
-// Display list of all Owners.
-exports.owner_list = asyncHandler(async (req, res, next) => {
+/* Author List View page */
+exports.owner_list = asyncHandler(async (res) => {
   const allOwners = await Owner.find().sort({ owner: 1 }).exec();
   res.render("owner_list", {
     title: "All Authors",
@@ -12,48 +12,39 @@ exports.owner_list = asyncHandler(async (req, res, next) => {
   });
 });
 
-
-// Display detail page for a specific Owner.
+/* Author Detail View page */
 exports.owner_detail = asyncHandler(async (req, res, next) => {
   const [owner, allResourcesByOwner] = await Promise.all([
     Owner.findById(req.params.id).exec(),
     ResourceDetail.find({ owner: req.params.id }, "name ").exec(),
   ]);
-
   if (owner === null) {
     const err = new Error("Author not found");
     err.status = 404;
     return next(err);
   }
-
   res.render("owner_detail", {
     owner: owner,
     owner_resources: allResourcesByOwner,
   });
 });
 
-// Display Owner create form on GET.
+/* Create Author form GET */
 exports.owner_create_get = asyncHandler(async (req, res, next) => {
   res.render("owner_form", { title: "Create Author" });
 });
 
-// Handle Owner create on POST.
+/* Author Author form POST */
 exports.owner_create_post = [
-  // Validate and sanitize the name field.
   body("owner", "Author cannot be more than 50 characters")
     .trim()
     .isLength({ max: 50 })
     .escape(),
 
-  // Process request after validation and sanitization.
   asyncHandler(async (req, res, next) => {
-    // Extract the validation errors from a request.
     const errors = validationResult(req);
-
     const owner = new Owner({ owner: req.body.owner });
-
     if (!errors.isEmpty()) {
-      // There are errors. Render the form again with sanitized values/error messages.
       res.render("owner_form", {
         title: "Create Author",
         owner: owner,
@@ -61,7 +52,6 @@ exports.owner_create_post = [
       });
       return;
     } else {
-      
       const ownerExists = await Owner.findOne({ type: req.body.owner })
         .collation({ locale: "en", strength: 2 })
         .exec();
@@ -75,7 +65,7 @@ exports.owner_create_post = [
   }),
 ];
 
-// Display Owner delete form on GET.
+/* Delete Author page GET */
 exports.owner_delete_get = asyncHandler(async (req, res, next) => {
   const [owner, allResourcesByOwner] = await Promise.all([
     Owner.findById(req.params.id).exec(),
@@ -83,7 +73,6 @@ exports.owner_delete_get = asyncHandler(async (req, res, next) => {
   ]);
 
   if (owner === null) {
-    // No results.
     res.redirect("/database/authors");
   }
 
@@ -94,7 +83,7 @@ exports.owner_delete_get = asyncHandler(async (req, res, next) => {
   });
 });
 
-// Handle Owner delete on POST.
+/* Delete Author page POST */
 exports.owner_delete_post = asyncHandler(async (req, res, next) => {
   const [owner, allResourcesByOwner] = await Promise.all([
     Owner.findById(req.params.id).exec(),
@@ -114,12 +103,11 @@ exports.owner_delete_post = asyncHandler(async (req, res, next) => {
   }
 });
 
-// Display Owner update form on GET.
+/* Not yet implemented or not required. */
 exports.owner_update_get = asyncHandler(async (req, res, next) => {
   res.send("NOT IMPLEMENTED: Owner update GET");
 });
 
-// Handle Owner update on POST.
 exports.owner_update_post = asyncHandler(async (req, res, next) => {
   res.send("NOT IMPLEMENTED: Owner update POST");
 });

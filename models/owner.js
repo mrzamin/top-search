@@ -7,7 +7,9 @@ const OwnerSchema = new Schema({
 });
 
 OwnerSchema.virtual("url").get(function () {
-  return `/database/owner/${this._id}`;
+  return `/database/author/${this._id}`;
 });
+
+OwnerSchema.index({ type: "text" });
 
 module.exports = mongoose.model("Owner", OwnerSchema);

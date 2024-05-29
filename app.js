@@ -1,42 +1,35 @@
-const createError = require("http-errors");
-const express = require("express");
-const path = require("path");
-const session = require("express-session");
-
-const passport = require("passport");
-const cookieParser = require("cookie-parser");
-const logger = require("morgan");
-const indexRouter = require("./routes/index");
-const usersRouter = require("./routes/users");
-const databaseRouter = require("./routes/database");
-const MongoStore = require("connect-mongo");
-
 /**
- * -------------- Create the Express application ----------------
+ * -------------- Create Express App ------------
  */
+const express = require("express");
 const app = express();
 
 /**
- * -------------- Connect to database ----------------
+ * -------------- Connect DB --------------------
  */
 require("./config/database");
 
-
 /**
- * -------------- General setup ----------------
+ * -------------- General Setup ------------------
  */
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
 require("dotenv").config();
+
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-
 /**
- * -------------- PASSPORT AUTHENTICATION ----------------
+ * -------------- Passport Authentication ------------
  */
+const session = require("express-session");
+const passport = require("passport");
 require("./config/passport");
+const MongoStore = require("connect-mongo");
 
 app.use(
   session({
@@ -48,7 +41,7 @@ app.use(
     }),
   })
 );
-app.use((req, res, next) => {
+app.use((req, next) => {
   console.log(req.session);
   console.log(req.user);
   next();
@@ -56,7 +49,7 @@ app.use((req, res, next) => {
 app.use(passport.session());
 
 /**
- * -------------- Setup view engine and views ----------------
+ * -------------- Local User Variable -----------------
  */
 app.use((req, res, next) => {
   res.locals.currentUser = req.user;
@@ -64,22 +57,26 @@ app.use((req, res, next) => {
 });
 
 /**
- * -------------- Setup view engine and views ----------------
+ * -------------- View Engine and Views ---------------
  */
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 
 /**
- * -------------- ROUTES ----------------
+ * -------------- Routes -----------------------------
  */
+const indexRouter = require("./routes/index");
+const usersRouter = require("./routes/users");
+const databaseRouter = require("./routes/database");
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/database", databaseRouter);
 
 /**
- * -------------- ERRORS ----------------
+ * -------------- ERRORS ----------------------------
  */
+const createError = require("http-errors");
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -4,18 +4,19 @@ const asyncHandler = require("express-async-handler");
 const { generatePassword } = require("../lib/passwordUtils");
 const passport = require("passport");
 
+/* User Register form GET */
 exports.user_create_get = asyncHandler(async (req, res, next) => {
   res.render("user_create_form", {
     title: "Signup",
   });
 });
 
+/* User Register form POST */
 exports.user_create_post = [
   body("username", "Username Must Be Three Characters")
     .isLength({ min: 3 })
     .trim()
     .escape(),
-  // Check Password
   body("password")
     .isLength({ min: 8 })
     .withMessage("Password Must Be at Least 8 Characters")
@@ -27,7 +28,6 @@ exports.user_create_post = [
     .escape(),
 
   asyncHandler(async (req, res, next) => {
-    // Extract the validation errors from a request.
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
@@ -38,6 +38,7 @@ exports.user_create_post = [
   }),
 ];
 
+/* Create User help function */
 const createUser = asyncHandler(async (req, res, next) => {
   const hashedPassword = await generatePassword(req.body.password);
   try {
@@ -46,19 +47,21 @@ const createUser = asyncHandler(async (req, res, next) => {
       password: hashedPassword,
       admin: false,
     });
-    const result = await user.save();
+    await user.save();
     res.redirect("/users/login");
   } catch (err) {
     return next(err);
   }
 });
 
+/* User Login form GET */
 exports.user_login_get = asyncHandler(async (req, res, next) => {
   res.render("user_login_form", {
     title: "Login",
   });
 });
 
+/* User Login form POST */
 exports.user_login_post = async (req, res, next) => {
   passport.authenticate("local", function (err, user, options) {
     if (err) {
@@ -67,8 +70,6 @@ exports.user_login_post = async (req, res, next) => {
     if (!user) {
       return res.render("user_login_form", { messages: options.message });
     }
-
-    // NEED TO CALL req.login()!!!
     req.login(user, function (err) {
       if (err) {
         return next(err);
@@ -78,6 +79,7 @@ exports.user_login_post = async (req, res, next) => {
   })(req, res, next);
 };
 
+/* User Logout */
 exports.user_logout_get = asyncHandler(async (req, res, next) => {
   req.logout((err) => {
     if (err) {
@@ -91,6 +93,7 @@ exports.admin_dashboard_get = asyncHandler(async (req, res, next) => {
   res.render("admin_dashboard", {});
 });
 
+/* isAuthenticated Middleware */
 exports.isAuthenticated = (req, res, next) => {
   if (req.isAuthenticated()) {
     next();
@@ -101,6 +104,7 @@ exports.isAuthenticated = (req, res, next) => {
   }
 };
 
+/* isAdmin Middleware */
 exports.isAdmin = (req, res, next) => {
   if (req.isAuthenticated() && req.user.admin) {
     next();
@@ -111,6 +115,7 @@ exports.isAdmin = (req, res, next) => {
   }
 };
 
+/* Admin Dashboard GET */
 exports.admin_dashboard_get = (req, res, next) => {
   res.render("admin_dashboard");
 };

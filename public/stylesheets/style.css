@@ -1,8 +1,6 @@
-/* @import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"); */
-
 @import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-/*CSS reset. */
 
+/*CSS reset. */
 body,
 p,
 a,
@@ -47,8 +45,8 @@ h4 {
 .leading {
   font-size: 1.1em;
 }
-/*Base styles. */
 
+/*Base styles. */
 :root {
   --primary: #f7f6f1;
   --secondary: #1f4d8f;
@@ -89,7 +87,7 @@ textarea {
   color: white;
 }
 
-/* Nav items */
+/* Nav styles */
 .dropbtn,
 .nav-item {
   background-color: var(--primary);
@@ -97,13 +95,11 @@ textarea {
   padding: 16px;
 }
 
-/* The container <li> for the dropdown content */
 .dropdown {
   position: relative;
   display: inline-block;
 }
 
-/* Dropdown Content (Hidden by Default) */
 .dropdown-content {
   display: none;
   position: absolute;
@@ -113,7 +109,6 @@ textarea {
   z-index: 1;
 }
 
-/* Links inside the dropdown */
 .dropdown-content a {
   color: black;
   padding: 12px 16px;
@@ -121,17 +116,14 @@ textarea {
   display: block;
 }
 
-/* Change color of dropdown links on hover */
 .dropdown-content a:hover {
   background-color: #ddd;
 }
 
-/* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
   display: block;
 }
 
-/* Change the background color of the nav items when hovered on */
 .dropdown:hover .dropbtn,
 .nav-item:hover {
   background-color: var(--secondary);
@@ -142,7 +134,6 @@ textarea {
 .grid {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
-  /* border: 1px solid blue; */
   gap: 8px;
 }
 
@@ -272,6 +263,7 @@ footer li {
 footer img {
   width: 20px;
 }
+
 /* Small tablets. */
 @media screen and (min-width: 620px) {
   .welcome-text {
@@ -290,13 +282,11 @@ footer img {
   }
 
   .projects a {
-    /* grid-column: span 4; */
     display: block;
     margin: 20px 0;
   }
 
   .projects a * {
-    /* margin: 10px 20%; */
     max-width: 100%;
   }
 
@@ -442,7 +432,6 @@ footer img {
 }
 
 /* Form styles */
-/* Full-width input fields */
 .form-container input[type="text"],
 input[type="password"] {
   width: 100%;
@@ -464,7 +453,6 @@ input[type="password"]:focus {
   margin-bottom: 25px;
 }
 
-/* Set a style for all buttons */
 .form-container button {
   background-color: var(--secondary);
   color: white;
@@ -480,31 +468,26 @@ input[type="password"]:focus {
   opacity: 1;
 }
 
-/* Extra styles for the cancel button */
 .cancelbtn {
   padding: 14px 20px;
 }
 
-/* Float cancel and signup buttons and add an equal width */
 .cancelbtn,
 .signupbtn {
   float: left;
   width: 50%;
 }
 
-/* Add padding to container elements */
 .form-container {
   padding: 16px;
 }
 
-/* Clear floats */
 .clearfix::after {
   content: "";
   clear: both;
   display: table;
 }
 
-/* Change styles for cancel button and signup button on extra small screens */
 @media screen and (max-width: 300px) {
   .cancelbtn,
   .signupbtn {
@@ -513,7 +496,6 @@ input[type="password"]:focus {
 }
 
 /*Login form styles.*/
-/* Full-width inputs */
 .login input[type="text"],
 .login input[type="password"] {
   width: 100%;
@@ -535,42 +517,35 @@ input[type="password"]:focus {
   width: 100%;
 }
 
-/* Add a hover effect for buttons */
 .login button:hover,
 .cancelbtn:hover {
   opacity: 0.8;
 }
 
-/* Extra style for the cancel button (red) */
 .login .cancelbtn {
   width: auto;
   padding: 10px 18px;
 }
 
-/* Center the avatar image inside this container */
 .login .imgcontainer {
   text-align: center;
   margin: 24px 0 12px 0;
 }
 
-/* Avatar image */
 .login img.avatar {
   width: 40%;
   border-radius: 50%;
 }
 
-/* Add padding to containers */
 .login-container {
   padding: 16px;
 }
 
-/* The "Forgot password" text */
 .login span.psw {
   float: right;
   padding-top: 16px;
 }
 
-/* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
   .login-container span.psw {
     display: block;
@@ -582,8 +557,6 @@ input[type="password"]:focus {
 }
 
 /* Admin dashboard styles. */
-
-/* Assign grid instructions to our parent grid container, mobile-first (hide the sidenav) */
 .grid-container {
   display: grid;
   grid-template-columns: 1fr;
@@ -609,7 +582,6 @@ input[type="password"]:focus {
   padding: 12px;
 }
 
-/* Give every child element its grid name */
 .header {
   grid-area: header;
   display: flex;
@@ -619,7 +591,6 @@ input[type="password"]:focus {
   background-color: var(--tan);
 }
 
-/* Make room for the menu icon on mobile */
 .header__search {
   margin-left: 42px;
 }
@@ -716,14 +687,12 @@ input[type="password"]:focus {
   width: 100%;
   background-color: whitesmoke;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
-
   margin-bottom: 20px;
   -webkit-column-break-inside: avoid;
   padding: 24px;
   box-sizing: border-box;
 }
 
-/* Force varying heights to simulate dynamic content */
 .card:first-child {
   height: 485px;
 }

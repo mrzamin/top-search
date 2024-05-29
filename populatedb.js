@@ -35,7 +35,7 @@ async function main() {
   mongoose.connection.close();
 }
 
-// We pass the index to the ...Create functions so that, for example,
+// I pass the index to the ...Create functions so that, for example,
 // type[0] will always be the Article type, regardless of the order
 // in which the elements of promise.all's argument complete.
 async function typeCreate(index, name) {

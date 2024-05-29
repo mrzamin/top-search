@@ -10,8 +10,6 @@ const ResourceDetailSchema = new Schema({
   href: { type: String, required: true },
 });
 
-// ResourceDetailSchema.index({ name: "text" });
-
 ResourceDetailSchema.virtual("url").get(function () {
   return `/database/resource/${this._id}`;
 });

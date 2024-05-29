@@ -1,9 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const passport = require("passport");
 const user_controller = require("../controllers/userController");
-const loginValidate = require("../lib/sanitization");
 const isAdmin = require("../controllers/userController").isAdmin;
+
 router.get("/signup", user_controller.user_create_get);
 
 router.post("/signup", user_controller.user_create_post);

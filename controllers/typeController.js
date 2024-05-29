@@ -1,10 +1,9 @@
 const ResourceType = require("../models/resourceType");
 const ResourceDetail = require("../models/resourceDetail");
 const { body, validationResult } = require("express-validator");
-
 const asyncHandler = require("express-async-handler");
 
-// Display list of all Types.
+/* Type List View page GET */
 exports.type_list = asyncHandler(async (req, res, next) => {
   const allTypes = await ResourceType.find().sort({ type: 1 }).exec();
   res.render("type_list", {
@@ -13,7 +12,7 @@ exports.type_list = asyncHandler(async (req, res, next) => {
   });
 });
 
-// Display detail page for a specific Type.
+/* Type Detail View page GET */
 exports.type_detail = asyncHandler(async (req, res, next) => {
   const [type, allResourcesByType] = await Promise.all([
     ResourceType.findById(req.params.id).exec(),
@@ -32,28 +31,24 @@ exports.type_detail = asyncHandler(async (req, res, next) => {
   });
 });
 
-// Display Type create form on GET.
+/* Create Type form GET */
 exports.type_create_get = asyncHandler(async (req, res, next) => {
   res.render("type_form", { title: "Create Type" });
 });
 
-// Handle Type create on POST.
+/* Create Type form POST */
 exports.type_create_post = [
-  // Validate and sanitize the name field.
   body("type", "Type must be between 3-30 characters")
     .trim()
     .isLength({ min: 3, max: 30 })
     .escape(),
 
-  // Process request after validation and sanitization.
   asyncHandler(async (req, res, next) => {
-    // Extract the validation errors from a request.
     const errors = validationResult(req);
 
     const type = new ResourceType({ type: req.body.type });
 
     if (!errors.isEmpty()) {
-      // There are errors. Render the form again with sanitized values/error messages.
       res.render("type_form", {
         title: "Create Type",
         type: type,
@@ -74,7 +69,7 @@ exports.type_create_post = [
   }),
 ];
 
-// Display Type delete form on GET.
+/* Delete Type form GET */
 exports.type_delete_get = asyncHandler(async (req, res, next) => {
   const [type, allResourcesByType] = await Promise.all([
     ResourceType.findById(req.params.id).exec(),
@@ -82,7 +77,6 @@ exports.type_delete_get = asyncHandler(async (req, res, next) => {
   ]);
 
   if (type === null) {
-    // No results.
     res.redirect("/database/types");
   }
 
@@ -93,6 +87,7 @@ exports.type_delete_get = asyncHandler(async (req, res, next) => {
   });
 });
 
+/* Delete Type form POST */
 exports.type_delete_post = asyncHandler(async (req, res, next) => {
   const [type, allResourcesByType] = await Promise.all([
     ResourceType.findById(req.params.id).exec(),
@@ -112,6 +107,7 @@ exports.type_delete_post = asyncHandler(async (req, res, next) => {
   }
 });
 
+/* Not yet implemented or not required. */
 exports.type_update_get = asyncHandler(async (req, res, next) => {
   res.send("NOT IMPLEMENTED: Type update GET");
 });
