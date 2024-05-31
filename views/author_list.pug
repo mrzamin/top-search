@@ -3,11 +3,11 @@ extends layout
 block content
   h1= title
   a(href="/database/author/create") + Create new author
-  if owner_list.length
+  if author_list.length
     ul
-      each owner in owner_list
+      each author in author_list
         li
-          a(href=owner.url) #{owner.owner}
+          a(href=author.url) #{author.name}
 
   else
     p There are no resources.

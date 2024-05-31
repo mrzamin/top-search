@@ -2,14 +2,14 @@ extends layout
 
 block content
 
-  h1 Author: #{owner.owner}
+  h1 Author: #{author.name}
 
   div(style='margin-left:20px;margin-top:20px')
 
     h2(style='font-size: 1.5rem;') Resources by this Author
-    if owner_resources.length
+    if author_resources.length
       dl
-        each resource in owner_resources
+        each resource in author_resources
           dt
             a(href=resource.url) #{resource.name}
     else
@@ -17,4 +17,4 @@ block content
       a(href="/database/authors") Go back to authors list 
   hr
   p
-    a(href=owner.url+'/delete') Delete author
+    a(href=author.url+'/delete') Delete author

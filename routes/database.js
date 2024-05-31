@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
-const course_controller = require("../controllers/courseController");
-const owner_controller = require("../controllers/ownerController");
+const subject_controller = require("../controllers/subjectController");
+const author_controller = require("../controllers/authorController");
 const resource_controller = require("../controllers/resourceController");
 const type_controller = require("../controllers/typeController");
 
@@ -40,23 +40,23 @@ router.get(
 );
 router.get("/resources", resource_controller.resource_list);
 
-/// OWNER ROUTES ///
+/// AUTHOR ROUTES ///
 
-router.get("/author/create", owner_controller.owner_create_get);
+router.get("/author/create", author_controller.author_create_get);
 
-router.post("/author/create", owner_controller.owner_create_post);
+router.post("/author/create", author_controller.author_create_post);
 
-router.get("/author/:id/delete", owner_controller.owner_delete_get);
+router.get("/author/:id/delete", author_controller.author_delete_get);
 
-router.post("/author/:id/delete", owner_controller.owner_delete_post);
+router.post("/author/:id/delete", author_controller.author_delete_post);
 
-router.get("/owner/:id/update", owner_controller.owner_update_get);
+router.get("/owner/:id/update", author_controller.author_update_get);
 
-router.post("/owner/:id/update", owner_controller.owner_update_post);
+router.post("/owner/:id/update", author_controller.author_update_post);
 
-router.get("/author/:id", owner_controller.owner_detail);
+router.get("/author/:id", author_controller.author_detail);
 
-router.get("/authors", owner_controller.owner_list);
+router.get("/authors", author_controller.author_list);
 
 /// TYPE ROUTES ///
 
@@ -78,20 +78,20 @@ router.get("/types", type_controller.type_list);
 
 /// COURSE ROUTES ///
 
-router.get("/course/create", course_controller.course_create_get);
+router.get("/subject/create", subject_controller.subject_create_get);
 
-router.post("/course/create", course_controller.course_create_post);
+router.post("/subject/create", subject_controller.subject_create_post);
 
-router.get("/course/:id/delete", course_controller.course_delete_get);
+router.get("/subject/:id/delete", subject_controller.subject_delete_get);
 
-router.post("/course/:id/delete", course_controller.course_delete_post);
+router.post("/subject/:id/delete", subject_controller.subject_delete_post);
 
-router.get("/course/:id/update", course_controller.course_update_get);
+router.get("/subject/:id/update", subject_controller.subject_update_get);
 
-router.post("/course/:id/update", course_controller.course_update_post);
+router.post("/subject/:id/update", subject_controller.subject_update_post);
 
-router.get("/course/:id", course_controller.course_detail);
+router.get("/subject/:id", subject_controller.subject_detail);
 
-router.get("/courses", course_controller.course_list);
+router.get("/subjects", subject_controller.subject_list);
 
 module.exports = router;

@@ -2,15 +2,15 @@ extends layout
 
 block content
 
-  h1 #{title}: #{owner.owner}
+  h1 #{title}: #{author.name}
 
-  if owner_resources.length
+  if author_resources.length
 
     p #[strong Delete the following resources before attempting to delete this author.]
     div(style='margin-left:20px;margin-top:20px')
       h4 Resources
       dl
-        each resource in owner_resources
+        each resource in author_resources
           dt
             a(href=resource.url) #{resource.name}
   else
@@ -18,6 +18,6 @@ block content
 
     form(method='POST')
       div.form-group
-        input#ownerid.form-control(type='hidden', name='ownerid', value=owner._id )
+        input#authorid.form-control(type='hidden', name='authorid', value=author._id )
 
       button.btn.btn-primary(type='submit') Delete

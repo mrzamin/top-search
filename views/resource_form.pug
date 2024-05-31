@@ -20,17 +20,17 @@ block content
           else
             option(value=author._id) #{author.owner}
     div.form-group
-      label(for='course') Course:
-      select#course.form-control(name='course' required)
-        option(value='') --Please select a course--
-        for course in courses
+      label(for='course') Subject:
+      select#subject.form-control(name='subject' required)
+        option(value='') --Please select a subject--
+        for subject in subjects
           if resource
-            if course._id.toString()===resource.course._id.toString()
-              option(value=course._id selected) #{course.course}
+            if subject._id.toString()===resource.subject._id.toString()
+              option(value=subject._id selected) #{subject.name}
             else
-              option(value=course._id) #{course.course}
+              option(value=subject._id) #{subject.name}
           else
-            option(value=course._id) #{course.course}
+            option(value=subject._id) #{subject.name}
     div.form-group
       label Type:
       div

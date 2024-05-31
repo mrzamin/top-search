@@ -1,23 +1,23 @@
 const ResourceDetail = require("../models/resourceDetail");
 const ResourceType = require("../models/resourceType");
-const Owner = require("../models/owner");
-const Course = require("../models/course");
+const Author = require("../models/author");
+const Subject = require("../models/subject");
 const { body, validationResult } = require("express-validator");
 const asyncHandler = require("express-async-handler");
 
 /* Homepage GET */
 exports.index = asyncHandler(async (req, res, next) => {
-  const [numResources, numTypes, numOwners, numCourses] = await Promise.all([
+  const [numResources, numTypes, numAuthors, numSubjects] = await Promise.all([
     ResourceDetail.countDocuments({}).exec(),
     ResourceType.countDocuments({}).exec(),
-    Owner.countDocuments({}).exec(),
-    Course.countDocuments({}).exec(),
+    Author.countDocuments({}).exec(),
+    Subject.countDocuments({}).exec(),
   ]);
   res.render("index", {
     resource_count: numResources,
     type_count: numTypes,
-    owner_count: numOwners,
-    course_count: numCourses,
+    author_count: numAuthors,
+    subject_count: numSubjects,
     user: req.user,
   });
 });
@@ -25,9 +25,9 @@ exports.index = asyncHandler(async (req, res, next) => {
 /* Resource List View page GET */
 exports.resource_list = asyncHandler(async (req, res, next) => {
   const allResources = await ResourceDetail.find({})
-    .populate("owner")
-    .populate("course")
-    .sort({ course: 1, name: 1 })
+    .populate("author")
+    .populate("subject")
+    .sort({ subject: 1, name: 1 })
     .exec();
   res.render("resource_list", {
     title: "All Resources",
@@ -38,8 +38,8 @@ exports.resource_list = asyncHandler(async (req, res, next) => {
 /* Resource Detail View page GET */
 exports.resource_detail = asyncHandler(async (req, res, next) => {
   const resource = await ResourceDetail.findById(req.params.id)
-    .populate("owner")
-    .populate("course")
+    .populate("author")
+    .populate("subject")
     .populate("type")
     .exec();
   if (resource === null) {
@@ -54,9 +54,9 @@ exports.resource_detail = asyncHandler(async (req, res, next) => {
 
 /* Node Detail View page GET */
 exports.node_detail = asyncHandler(async (req, res, next) => {
-  const nodeId = await Course.findOne({ course: "Node" }).exec();
+  const nodeId = await Subject.findOne({ subject: "Node" }).exec();
   const allResourcesByNode = await ResourceDetail.find(
-    { course: nodeId },
+    { subject: nodeId },
     "name"
   ).exec();
   if (allResourcesByNode === null) {
@@ -71,9 +71,9 @@ exports.node_detail = asyncHandler(async (req, res, next) => {
 
 /* User Register form POST */
 exports.react_detail = asyncHandler(async (req, res, next) => {
-  const reactId = await Course.findOne({ course: "React" }).exec();
+  const reactId = await Subject.findOne({ subject: "React" }).exec();
   const allResourcesByReact = await ResourceDetail.find(
-    { course: reactId },
+    { subject: reactId },
     "name"
   ).exec();
   if (allResourcesByReact === null) {
@@ -88,9 +88,9 @@ exports.react_detail = asyncHandler(async (req, res, next) => {
 
 /* JavaScript Detail View page GET */
 exports.javascript_detail = asyncHandler(async (req, res, next) => {
-  const javascriptId = await Course.findOne({ course: "Javascript" }).exec();
+  const javascriptId = await Subject.findOne({ subject: "Javascript" }).exec();
   const allResourcesByJavascript = await ResourceDetail.find(
-    { course: javascriptId },
+    { subject: javascriptId },
     "name"
   ).exec();
   if (allResourcesByJavascript === null) {
@@ -105,11 +105,11 @@ exports.javascript_detail = asyncHandler(async (req, res, next) => {
 
 /* Advanced HTML & CSS Detail View page GET */
 exports.advanced_detail = asyncHandler(async (req, res, next) => {
-  const advancedId = await Course.findOne({
-    course: "Advanced HTML & CSS",
+  const advancedId = await Subject.findOne({
+    subject: "Advanced HTML & CSS",
   }).exec();
   const allResourcesByAdvanced = await ResourceDetail.find(
-    { course: advancedId },
+    { subject: advancedId },
     "name"
   ).exec();
   if (allResourcesByAdvanced === null) {
@@ -124,12 +124,12 @@ exports.advanced_detail = asyncHandler(async (req, res, next) => {
 
 /* Intermediate HTML & CSS Detail View page GET */
 exports.intermediate_detail = asyncHandler(async (req, res, next) => {
-  const intermediateId = await Course.findOne({
-    course: "Intermediate HTML & CSS",
+  const intermediateId = await Subject.findOne({
+    subject: "Intermediate HTML & CSS",
   }).exec();
 
   const allResourcesByIntermediate = await ResourceDetail.find(
-    { course: intermediateId },
+    { subject: intermediateId },
     "name"
   ).exec();
   if (allResourcesByIntermediate === null) {
@@ -144,16 +144,16 @@ exports.intermediate_detail = asyncHandler(async (req, res, next) => {
 
 /* Create Resource form GET */
 exports.resource_create_get = asyncHandler(async (req, res, next) => {
-  const [allCourses, allTypes, allAuthors] = await Promise.all([
-    Course.find().sort({ course: 1 }).exec(),
+  const [allSubjects, allTypes, allAuthors] = await Promise.all([
+    Subject.find().sort({ subject: 1 }).exec(),
     ResourceType.find().sort({ type: 1 }).exec(),
-    Owner.find().sort({ owner: 1 }).exec(),
+    Author.find().sort({ name: 1 }).exec(),
   ]);
   res.render("resource_form", {
     title: "Create Resource",
     authors: allAuthors,
     types: allTypes,
-    courses: allCourses,
+    subjects: allSubjects,
   });
 });
 
@@ -167,7 +167,7 @@ exports.resource_create_post = [
     .trim()
     .isLength({ max: 50 })
     .escape(),
-  body("course", "Course must not be empty.")
+  body("subject", "subject must not be empty.")
     .trim()
     .isLength({ max: 50 })
     .escape(),
@@ -182,17 +182,17 @@ exports.resource_create_post = [
 
     const resource = new ResourceDetail({
       name: req.body.name,
-      owner: req.body.author,
+      author: req.body.author,
       type: req.body.type,
-      course: req.body.course,
+      subject: req.body.subject,
       href: req.body.link,
     });
 
     if (!errors.isEmpty()) {
-      const [allCourses, allTypes, allAuthors] = await Promise.all([
-        Course.find().sort({ course: 1 }).exec(),
+      const [allSubjects, allTypes, allAuthors] = await Promise.all([
+        Subject.find().sort({ subject: 1 }).exec(),
         ResourceType.find().sort({ type: 1 }).exec(),
-        Owner.find().sort({ owner: 1 }).exec(),
+        Author.find().sort({ name: 1 }).exec(),
       ]);
 
       for (const type of allTypes) {
@@ -205,7 +205,7 @@ exports.resource_create_post = [
         authors: allAuthors,
         types: allTypes,
         resource: resource,
-        courses: allCourses,
+        subjects: allSubjects,
         errors: errors.array(),
       });
     } else {
