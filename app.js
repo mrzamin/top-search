@@ -41,7 +41,7 @@ app.use(
     }),
   })
 );
-app.use((req, next) => {
+app.use((req, res, next) => {
   console.log(req.session);
   console.log(req.user);
   next();
