@@ -3,10 +3,11 @@ extends layout
 block content
   h1  #{resource.name}
 
-  p #[strong Owner: ]
-    a(href=resource.owner.url) #{resource.owner.owner}
+  p #[strong Author: ]
+    a(href=resource.author.url) #{resource.author.name}
   p #[strong Type:] #{resource.type.type}
-  p #[strong In Course: ] #{resource.course.course}
+  p #[strong Tags: ] #{tags}
+  p #[strong Href: ] #{resource.href}
 
   a(href="/database/resource/create") Create a new resource 
   a(href="/database/resources") Back to resource list
@@ -16,4 +17,4 @@ block content
    
 
 
-.
+

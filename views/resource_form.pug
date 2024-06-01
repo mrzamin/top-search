@@ -13,24 +13,22 @@ block content
         option(value='') --Please select an author--
         for author in authors
           if resource
-            if author._id.toString()===resource.owner._id.toString()
-              option(value=author._id selected) #{author.owner}
+            if author._id.toString()===resource.author._id.toString()
+              option(value=author._id selected) #{author.name}
             else
-              option(value=author._id) #{author.owner}
+              option(value=author._id) #{author.name}
           else
-            option(value=author._id) #{author.owner}
+            option(value=author._id) #{author.name}
     div.form-group
-      label(for='course') Subject:
-      select#subject.form-control(name='subject' required)
-        option(value='') --Please select a subject--
-        for subject in subjects
-          if resource
-            if subject._id.toString()===resource.subject._id.toString()
-              option(value=subject._id selected) #{subject.name}
+      label(for='tags') Tags:
+      div
+        for tag in tags
+          div(style='display: inline; padding-right:10px;')
+            if tag.checked
+              input.checkbox-input(type='checkbox', name="tags", id='tags', value=tag, checked)
             else
-              option(value=subject._id) #{subject.name}
-          else
-            option(value=subject._id) #{subject.name}
+              input.checkbox-input(type='checkbox', name="tags", id=tag, value=tag)
+            label(for='tags') &nbsp;#{tag}
     div.form-group
       label Type:
       div

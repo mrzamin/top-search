@@ -1,23 +1,20 @@
 const ResourceDetail = require("../models/resourceDetail");
 const ResourceType = require("../models/resourceType");
 const Author = require("../models/author");
-const Subject = require("../models/subject");
 const { body, validationResult } = require("express-validator");
 const asyncHandler = require("express-async-handler");
 
 /* Homepage GET */
 exports.index = asyncHandler(async (req, res, next) => {
-  const [numResources, numTypes, numAuthors, numSubjects] = await Promise.all([
+  const [numResources, numTypes, numAuthors] = await Promise.all([
     ResourceDetail.countDocuments({}).exec(),
     ResourceType.countDocuments({}).exec(),
     Author.countDocuments({}).exec(),
-    Subject.countDocuments({}).exec(),
   ]);
   res.render("index", {
     resource_count: numResources,
     type_count: numTypes,
     author_count: numAuthors,
-    subject_count: numSubjects,
     user: req.user,
   });
 });
@@ -27,7 +24,7 @@ exports.resource_list = asyncHandler(async (req, res, next) => {
   const allResources = await ResourceDetail.find({})
     .populate("author")
     .populate("subject")
-    .sort({ subject: 1, name: 1 })
+    .sort({ subject: 1 })
     .exec();
   res.render("resource_list", {
     title: "All Resources",
@@ -39,7 +36,7 @@ exports.resource_list = asyncHandler(async (req, res, next) => {
 exports.resource_detail = asyncHandler(async (req, res, next) => {
   const resource = await ResourceDetail.findById(req.params.id)
     .populate("author")
-    .populate("subject")
+    .populate("tags")
     .populate("type")
     .exec();
   if (resource === null) {
@@ -47,14 +44,16 @@ exports.resource_detail = asyncHandler(async (req, res, next) => {
     err.status = 404;
     return next(err);
   }
+  const tags = resource.tags.toString().split(",").join(", ");
   res.render("resource_detail", {
     resource: resource,
+    tags: tags,
   });
 });
 
 /* Node Detail View page GET */
 exports.node_detail = asyncHandler(async (req, res, next) => {
-  const nodeId = await Subject.findOne({ subject: "Node" }).exec();
+  const nodeId = await Subject.findOne({ name: "Node" }).exec();
   const allResourcesByNode = await ResourceDetail.find(
     { subject: nodeId },
     "name"
@@ -144,16 +143,18 @@ exports.intermediate_detail = asyncHandler(async (req, res, next) => {
 
 /* Create Resource form GET */
 exports.resource_create_get = asyncHandler(async (req, res, next) => {
-  const [allSubjects, allTypes, allAuthors] = await Promise.all([
-    Subject.find().sort({ subject: 1 }).exec(),
+  const [allTags, allTypes, allAuthors] = await Promise.all([
+    ResourceDetail.collection.distinct("tags"),
     ResourceType.find().sort({ type: 1 }).exec(),
     Author.find().sort({ name: 1 }).exec(),
   ]);
+
+  const array = allTags.toString().split(",");
   res.render("resource_form", {
     title: "Create Resource",
     authors: allAuthors,
     types: allTypes,
-    subjects: allSubjects,
+    tags: array,
   });
 });
 
@@ -167,24 +168,22 @@ exports.resource_create_post = [
     .trim()
     .isLength({ max: 50 })
     .escape(),
-  body("subject", "subject must not be empty.")
-    .trim()
-    .isLength({ max: 50 })
-    .escape(),
+  body("tags", "Tags must not be empty.").trim().isLength({ max: 50 }).escape(),
   body("type", "Type must not be empty.")
     .trim()
     .isLength({ max: 530, min: 3 })
     .escape(),
-  body("link", "Resource link must be a URL.").isURL().escape(),
+  // body("link", "Resource link must be a URL.").isURL().escape(),
 
   asyncHandler(async (req, res, next) => {
+    const tags = req.body.tags.toString().split(",");
     const errors = validationResult(req);
 
     const resource = new ResourceDetail({
       name: req.body.name,
       author: req.body.author,
       type: req.body.type,
-      subject: req.body.subject,
+      tags: tags,
       href: req.body.link,
     });
 

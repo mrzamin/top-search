@@ -6,7 +6,7 @@ const ResourceDetailSchema = new Schema({
   name: { type: String, required: true, maxLength: 100, minLength: 3 },
   author: { type: Schema.Types.ObjectId, ref: "Author", required: true },
   type: { type: Schema.Types.ObjectId, ref: "ResourceType", required: true },
-  subject: { type: Schema.Types.ObjectId, ref: "Subject", required: true },
+  tags: [String],
   href: { type: String, required: true },
 });
 

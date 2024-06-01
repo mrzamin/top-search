@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const ResourceTypeSchema = new Schema({
   type: {
-    type: String,
+    type: [String],
     required: true,
     maxLength: 30,
     minLength: 3,
