@@ -5,8 +5,8 @@ const Schema = mongoose.Schema;
 const ResourceDetailSchema = new Schema({
   name: { type: String, required: true, maxLength: 100, minLength: 3 },
   author: { type: Schema.Types.ObjectId, ref: "Author", required: true },
-  type: { type: Schema.Types.ObjectId, ref: "ResourceType", required: true },
-  tags: [String],
+  types: { type: Array, required: true },
+  tags: { type: Array, required: true },
   href: { type: String, required: true },
 });
 
