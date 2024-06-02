@@ -25,20 +25,20 @@ block content
         for tag in tags
           div(style='display: inline; padding-right:10px;')
             if tag.checked
-              input.checkbox-input(type='checkbox', name="tags", id='tags', value=tag, checked)
+              input.checkbox-input(type='checkbox', name="tags", id=tag, value=tag, checked)
             else
               input.checkbox-input(type='checkbox', name="tags", id=tag, value=tag)
-            label(for='tags') &nbsp;#{tag}
+            label(for=tag) &nbsp;#{tag}
     div.form-group
       label Type:
       div
         for type in types
           div(style='display: inline; padding-right:10px;')
             if type.checked
-              input.checkbox-input(type='radio', name='type', id=type._id, value=type._id, checked)
+              input.checkbox-input(type='checkbox', name='types', id=type, value=type, checked)
             else
-              input.checkbox-input(type='radio', name='type', id=type._id, value=type._id, )
-            label(for=type._id) &nbsp;#{type.type}
+              input.checkbox-input(type='checkbox', name='types', id=type, value=type, )
+            label(for=type) &nbsp;#{type}
     div.form-group
       label(for='link') Name:
       input#link.form-control(type='text', placeholder='Link of resource' required name='link' value=(undefined===resource ? '' : resource.href) )
