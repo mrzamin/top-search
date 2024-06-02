@@ -15,7 +15,7 @@ exports.author_list = asyncHandler(async (req, res, next) => {
 /* Author Detail View page */
 exports.author_detail = asyncHandler(async (req, res, next) => {
   const [author, allResourcesByAuthor] = await Promise.all([
-    author.findById(req.params.id).exec(),
+    Author.findById(req.params.id).exec(),
     ResourceDetail.find({ author: req.params.id }, "name").exec(),
   ]);
   if (author === null) {
@@ -36,14 +36,14 @@ exports.author_create_get = asyncHandler(async (req, res, next) => {
 
 /* Author Author form POST */
 exports.author_create_post = [
-  body("author", "Author cannot be more than 50 characters")
+  body("name", "Author cannot be more than 50 characters")
     .trim()
     .isLength({ max: 50 })
     .escape(),
 
   asyncHandler(async (req, res, next) => {
     const errors = validationResult(req);
-    const author = new Author({ author: req.body.author });
+    const author = new Author({ name: req.body.name });
     if (!errors.isEmpty()) {
       res.render("author_form", {
         title: "Create Author",
@@ -52,7 +52,7 @@ exports.author_create_post = [
       });
       return;
     } else {
-      const authorExists = await Author.findOne({ type: req.body.author })
+      const authorExists = await Author.findOne({ name: req.body.name })
         .collation({ locale: "en", strength: 2 })
         .exec();
       if (authorExists) {
