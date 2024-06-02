@@ -3,6 +3,7 @@ const ResourceType = require("../models/resourceType");
 const Author = require("../models/author");
 const { body, validationResult } = require("express-validator");
 const asyncHandler = require("express-async-handler");
+const { default: mongoose } = require("mongoose");
 
 /* Homepage GET */
 exports.index = asyncHandler(async (req, res, next) => {
@@ -23,8 +24,8 @@ exports.index = asyncHandler(async (req, res, next) => {
 exports.resource_list = asyncHandler(async (req, res, next) => {
   const allResources = await ResourceDetail.find({})
     .populate("author")
-    .populate("subject")
-    .sort({ subject: 1 })
+    .populate("tags")
+    .sort({ tags: 1 })
     .exec();
   res.render("resource_list", {
     title: "All Resources",
@@ -37,7 +38,7 @@ exports.resource_detail = asyncHandler(async (req, res, next) => {
   const resource = await ResourceDetail.findById(req.params.id)
     .populate("author")
     .populate("tags")
-    .populate("type")
+    .populate("types")
     .exec();
   if (resource === null) {
     const err = new Error("Resource not found");
@@ -45,9 +46,11 @@ exports.resource_detail = asyncHandler(async (req, res, next) => {
     return next(err);
   }
   const tags = resource.tags.toString().split(",").join(", ");
+  const types = resource.types.toString().split(",").join(", ");
   res.render("resource_detail", {
     resource: resource,
     tags: tags,
+    types: types,
   });
 });
 
@@ -145,16 +148,18 @@ exports.intermediate_detail = asyncHandler(async (req, res, next) => {
 exports.resource_create_get = asyncHandler(async (req, res, next) => {
   const [allTags, allTypes, allAuthors] = await Promise.all([
     ResourceDetail.collection.distinct("tags"),
-    ResourceType.find().sort({ type: 1 }).exec(),
+    ResourceDetail.collection.distinct("types"),
     Author.find().sort({ name: 1 }).exec(),
   ]);
 
-  const array = allTags.toString().split(",");
+  const tagArray = allTags.toString().split(",");
+  const typeArray = allTypes.toString().split(",");
+
   res.render("resource_form", {
     title: "Create Resource",
     authors: allAuthors,
-    types: allTypes,
-    tags: array,
+    types: typeArray,
+    tags: tagArray,
   });
 });
 
@@ -169,7 +174,7 @@ exports.resource_create_post = [
     .isLength({ max: 50 })
     .escape(),
   body("tags", "Tags must not be empty.").trim().isLength({ max: 50 }).escape(),
-  body("type", "Type must not be empty.")
+  body("types", "Type must not be empty.")
     .trim()
     .isLength({ max: 530, min: 3 })
     .escape(),
@@ -177,34 +182,36 @@ exports.resource_create_post = [
 
   asyncHandler(async (req, res, next) => {
     const tags = req.body.tags.toString().split(",");
+    const types = req.body.types.toString().split(",");
+
     const errors = validationResult(req);
 
     const resource = new ResourceDetail({
       name: req.body.name,
       author: req.body.author,
-      type: req.body.type,
+      types: types,
       tags: tags,
       href: req.body.link,
     });
 
     if (!errors.isEmpty()) {
-      const [allSubjects, allTypes, allAuthors] = await Promise.all([
-        Subject.find().sort({ subject: 1 }).exec(),
-        ResourceType.find().sort({ type: 1 }).exec(),
+      const [allTags, allTypes, allAuthors] = await Promise.all([
+        ResourceDetail.collection.distinct("tags"),
+        ResourceDetail.collection.distinct("types"),
         Author.find().sort({ name: 1 }).exec(),
       ]);
 
-      for (const type of allTypes) {
-        if (resource.type === type._id) {
-          type.checked = "true";
-        }
-      }
+      // for (const type of allTypes) {
+      //   if (resource.type === type._id) {
+      //     type.checked = "true";
+      //   }
+      // }
       res.render("resource_form", {
         title: "Create Resource",
         authors: allAuthors,
         types: allTypes,
         resource: resource,
-        subjects: allSubjects,
+        tags: allTags,
         errors: errors.array(),
       });
     } else {
