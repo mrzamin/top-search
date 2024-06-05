@@ -1,48 +1,67 @@
 extends layout
 
 block content
-  h1= title
+  
 
-  form(method='POST')
+  form(method='POST').form-container
+    h1= title
+    hr
     div.form-group
-      label(for='name') Name:
-      input#name.form-control(type='text', placeholder='Name of resource' name='name' required value=(undefined===resource ? '' : resource.name) )
+      label(for="name")
+        b Name:
+        input#name.form-control( 
+        name="name" 
+        placeholder="Name of Resource" 
+        type="text"
+        value=(undefined===resource ? '' : resource.name)
+        required
+        )
+      //- h4 Name:
+      //- input#name.form-control(type='text', placeholder='Name of resource' name='name' required value=(undefined===resource ? '' : resource.name) )
     div.form-group
-      label(for='author') Author:
-      select#author.form-control(name='author' required )
-        option(value='') --Please select an author--
-        for author in authors
-          if resource
-            if author._id.toString()===resource.author._id.toString()
-              option(value=author._id selected) #{author.name}
+      label(for='author') 
+        b Author:
+        select#author.form-control(name='author' required )
+          option(value='') --Please select an author--
+          for author in authors
+            if resource
+              if author._id.toString()===resource.author._id.toString()
+                option(value=author._id selected) #{author.name}
+              else
+                option(value=author._id) #{author.name}
             else
               option(value=author._id) #{author.name}
-          else
-            option(value=author._id) #{author.name}
+
     div.form-group
-      label(for='tags') Tags:
-      div
-        for tag in tags
-          div(style='display: inline; padding-right:10px;')
-            if tag.checked
-              input.checkbox-input(type='checkbox', name="tags", id=tag, value=tag, checked)
-            else
-              input.checkbox-input(type='checkbox', name="tags", id=tag, value=tag)
-            label(for=tag) &nbsp;#{tag}
+        label
+        b Tags:
+        div.checkboxes
+          for tag in tags
+            div(style='display: inline; padding-right:10px')
+              if tag.checked
+                input.css-checkbox(type='checkbox', name="tags", id=tag, value=tag, checked)
+                
+              else
+                input.css-checkbox(type='checkbox', name="tags", id=tag, value=tag)
+              label(for=tag) &nbsp;#{tag}
+
+
     div.form-group
-      label Type:
-      div
+      label 
+      b Type:
+      div.checkboxes
         for type in types
           div(style='display: inline; padding-right:10px;')
             if type.checked
-              input.checkbox-input(type='checkbox', name='types', id=type, value=type, checked)
+              input.css-checkbox(type='checkbox', name='types', id=type, value=type, checked)
             else
-              input.checkbox-input(type='checkbox', name='types', id=type, value=type, )
+              input.css-checkbox(type='checkbox', name='types', id=type, value=type, )
             label(for=type) &nbsp;#{type}
     div.form-group
-      label(for='link') Name:
+      label(for='link') 
+      b Link:
       input#link.form-control(type='text', placeholder='Link of resource' required name='link' value=(undefined===resource ? '' : resource.href) )
-    button.btn.btn-primary(type='submit') Submit
+    button.btn.btn-primary.button(type='submit') Submit
 
   if errors
     ul
