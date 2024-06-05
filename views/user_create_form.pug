@@ -5,7 +5,7 @@ block content
     form(
     style="border:1px solid #ccc" 
     method='POST'
-    ).form-container
+    ).form-container.register
         h1 Sign Up
         p Please fill in this form to create an account.
         hr
@@ -45,8 +45,8 @@ block content
             ) Terms & Privacy
         | .
         .clearfix
-        button.cancelbtn(type="button") Cancel
-        button.signupbtn(type="submit") Sign Up
+        button.button.signupbtn(type="submit") Sign Up
+        button.button.cancelbtn(type="button") Cancel
 
         if errors
             ul
