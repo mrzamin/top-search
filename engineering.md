@@ -91,7 +91,24 @@ This website will be distributed with friends, family, and peers, who will likel
 
 ### Componentization
 
-I chose Pug as my template engine of choice over others -- like EJS -- due to its conciseness and intuitive indentation.
+I am using a template engine to dynamically inject data into my frontend views. A template engine compiles my templates into HTML files and serves them to the browser.I chose Pug as my template engine of choice over others -- like EJS -- due to its conciseness and intuitive indentation. Here is a snippet of Pug template.
+
+Pug uses indentation to work out which HTML tags are nested inside each other, like so:
+
+```sh
+form(method='POST').form-container
+    h1 #{title}
+    div.form-group
+      label(for='type') Type:
+      input#type.form-control(type='text', placeholder='Article, Documentation, Video, etc.' name='type' required value=(undefined===type ? '' : type.type) )
+    button.btn.btn-primary(type='submit') Submit
+
+  if errors
+    ul
+      for error in errors
+        li!= error.msg;
+
+```
 
 Located in `views`:
 
@@ -123,10 +140,10 @@ Located in `views`:
 
 - [x] Homepage
 - [x] Admin Dashboard
-- [ ] Detail Pages
+- [x] Detail Pages
 - [ ] List Pages
-- [ ] Sign-up Page
-- [ ] Login Page
+- [x] Sign-up Page
+- [x] Login Page
 - [ ] Error Page
 
 ![Screenshot from 2024-05-28 00-07-04](https://github.com/mrzamin/top-search/assets/142754418/e17c9b48-5512-49fd-a08f-086f607f6b22)
