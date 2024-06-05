@@ -91,7 +91,7 @@ This website will be distributed with friends, family, and peers, who will likel
 
 ### Componentization
 
-I am using a template engine to dynamically inject data into my frontend views. A template engine compiles my templates into HTML files and serves them to the browser.I chose Pug as my template engine of choice over others -- like EJS -- due to its conciseness and intuitive indentation. Here is a snippet of Pug template.
+I am using a template engine to dynamically inject data into templates for my frontend views. A template engine compiles my templates into HTML files and serves them to the browser. I chose Pug as my template engine of choice over others -- like EJS -- due to its conciseness and intuitive indentation. Here is a snippet of Pug template.
 
 Pug uses indentation to work out which HTML tags are nested inside each other, like so:
 
@@ -147,6 +147,7 @@ Located in `views`:
 - [ ] Error Page
 
 ![Screenshot from 2024-05-28 00-07-04](https://github.com/mrzamin/top-search/assets/142754418/e17c9b48-5512-49fd-a08f-086f607f6b22)
+![image](https://github.com/mrzamin/top-search/assets/142754418/9e969a84-d79f-4cf6-b3e1-186ae22bbd46)
 
 ## Engineering
 
