@@ -35,7 +35,7 @@ block content
     div.form-group
         label
         b Tags:
-        div.checkboxes
+        div.checkboxes.tags
           for tag in tags
             div(style='display: inline; padding-right:10px')
               if tag.checked
@@ -57,7 +57,7 @@ block content
             else
               input.css-checkbox(type='checkbox', name='types', id=type, value=type, )
             label(for=type) &nbsp;#{type}
-    div.form-group
+    div.form-group.link
       label(for='link') 
       b Link:
       input#link.form-control(type='text', placeholder='Link of resource' required name='link' value=(undefined===resource ? '' : resource.href) )

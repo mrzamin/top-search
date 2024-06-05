@@ -468,8 +468,13 @@ select {
   font-family: "Montserrat Alternates", sans-serif;
 }
 
-.checkboxes {
-  margin-top: 10px;
+.checkboxes,
+.link {
+  margin-top: 20px;
+}
+
+.tags {
+  margin-bottom: 20px;
 }
 
 .form-container {
