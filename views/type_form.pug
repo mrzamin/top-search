@@ -2,12 +2,13 @@ extends layout
 
 block content
 
-  h1 #{title}
+  
 
-  form(method='POST')
+  form(method='POST').form-container
+    h1 #{title}
     div.form-group
       label(for='type') Type:
-      input#type.form-control(type='text', placeholder='Fantasy, Poetry etc.' name='type' required value=(undefined===type ? '' : type.type) )
+      input#type.form-control(type='text', placeholder='Article, Documentation, Video, etc.' name='type' required value=(undefined===type ? '' : type.type) )
     button.btn.btn-primary(type='submit') Submit
 
   if errors
