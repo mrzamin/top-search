@@ -2,7 +2,10 @@ doctype html
 html
   head
     title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/global.css')
+    link(rel='stylesheet', href='/stylesheets/adminDashboard.css')
+    link(rel='stylesheet', href='/stylesheets/inputs.css')
+    link(rel='stylesheet', href='/stylesheets/forms.css')
     script(type='text/javascript', href='/javascripts/classNames.js')
   body
     nav.site-nav.grid
@@ -12,12 +15,9 @@ html
         li.dropdown
           a(href="#materials").dropbtn.nav-item Database
           ul.dropdown-content
-            a(href="#materials")  Explore Database 
-            a(href="/database/resource/create")  Add New Resource 
-            a(href="/database/author/create")  Add New Author
+            a(href="/database/resource/create")  Contribute a resource! 
+            a(href="/database/author/create")  Contribute an author!
 
-        li
-          a(href="#purpose").nav-item Purpose
         li
           a(href="#contact").nav-item Contact
     block content

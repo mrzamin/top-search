@@ -1,0 +1,77 @@
+/* Form styles */
+
+.form-container hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+.form-group b {
+  color: var(--secondary);
+}
+
+.form-container .button {
+  display: block;
+  cursor: pointer;
+  width: 100%;
+  padding: 14px 20px;
+}
+
+.form-container {
+  padding: 16px;
+}
+
+/*Login form styles.*/
+
+.checkboxes,
+.link {
+  margin-top: 20px;
+}
+
+.tags {
+  margin-bottom: 20px;
+}
+
+.form-container {
+  border: 1px solid #ccc;
+}
+
+.form-container input[type="text"],
+input[type="password"],
+select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.form-container input[type="text"]::placeholder,
+input[type="password"]::placeholder,
+select::placeholder {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: bold;
+}
+
+.form-container input[type="text"],
+input[type="password"],
+select {
+  margin-bottom: 20px;
+}
+
+.form-container [type="text"]:focus,
+input[type="password"]:focus,
+.login input[type="text"]:focus,
+.login input[type="password"]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+.login-container {
+  padding: 16px;
+}
+
+.login span.psw {
+  float: right;
+  padding-top: 16px;
+}
