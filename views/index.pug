@@ -11,7 +11,7 @@ block content
         | A collection of amazing & free web development learning resources that are worth saving.
         
       div.call-to-action 
-        a.button(href="#materials") Explore Database
+        a.button(href="/database/resources") Explore Database
         a(href="/users/login").login-button Login
     .welcome-img
       img(
@@ -59,7 +59,7 @@ block content
       | External contributions are welcome to make this database great. 
       p Submit a resource or author you think others should know about!
 
-  section#contact
+  section#contact.contact-grid
     h3 Get In Touch
     p.leading Comment? Feedback? Broken link? I'd like to hear about it.
     form.form-container
@@ -71,5 +71,5 @@ block content
         placeholder="Email" 
         type="email"
         )
-      textarea(placeholder="Your message")
+      input(type="text" placeholder="Your message")
       button.button Submit

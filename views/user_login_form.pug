@@ -28,9 +28,10 @@ block content
         type="password"
         )
         button.button(type="submit") Login
-        button.button.cancelbtn(type="button") Cancel
+        button.button.cancelbtn(type="button")
+            a(href="/database") Cancel
         | Don't have an account? 
-        a(href="/users/signup") Sign up 
+        a(href="/users/signup").register-button Sign up 
     if messages
         p !{messages}
         

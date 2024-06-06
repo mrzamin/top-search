@@ -9,11 +9,11 @@ block content
     div.form-group
       label(for='name') Author:
       input#author.form-control(type='text', placeholder='Beethoven, Michaelangelo, etc.' name='name' required value=(undefined===author? '' : author.name) )
-    button.btn.btn-primary(type='submit') Submit
+    button.btn.btn-primary.button(type='submit') Submit
 
     if errors
       ul
         for error in errors
           li!= error.msg
     
-    a(href="/database/authors") Back to authors list
+    //- a(href="/database/authors").back Back to authors list

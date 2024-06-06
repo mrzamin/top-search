@@ -37,16 +37,9 @@ block content
       
         | Already have an account? 
         a(href="/users/login") Login 
-        p
-        | By creating an account you agree to our
-        a(
-            style="color:dodgerblue" 
-            href="#"
-            ) Terms & Privacy
-        | .
-        .clearfix
         button.button.signupbtn(type="submit") Sign Up
-        button.button.cancelbtn(type="button") Cancel
+        button.button.cancelbtn(type="button") 
+            a(href="/database") Cancel
 
         if errors
             ul

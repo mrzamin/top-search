@@ -1,13 +1,25 @@
 extends layout
 
 block content
-  h1= title
-  a(href="/database/resource/create") + Create new resource
-  if resource_list.length
-    ul
-      each resource in resource_list
-        li
-          a(href=resource.url) #{resource}: #{resource.name} (#{resource.author})
+  div.form-container.resource-list
+      h1= title
+      button.button
+        a(href="/database/resource/create") + Create new resource
+      if resource_list.length
+        ul
+          each resource in resource_list
+            li
+              a(href=resource.url) #{resource.name}
+              svg.size-5.resource-arrow(
+                        fill="currentColor" 
+                        viewBox="0 0 20 20" 
+                        xmlns="http://www.w3.org/2000/svg"
+                        )
+                            path(
+                            clip-rule="evenodd" 
+                            d="M5.22 14.78a.75.75 0 0 0 1.06 0l7.22-7.22v5.69a.75.75 0 0 0 1.5 0v-7.5a.75.75 0 0 0-.75-.75h-7.5a.75.75 0 0 0 0 1.5h5.69l-7.22 7.22a.75.75 0 0 0 0 1.06Z" 
+                            fill-rule="evenodd"
+                            )
 
-  else
-    p There are no resources.
+      else
+        p There are no resources.
