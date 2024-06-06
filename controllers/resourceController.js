@@ -184,7 +184,6 @@ exports.resource_create_post = [
     .trim()
     .isLength({ max: 530, min: 3 })
     .escape(),
-  // body("link", "Resource link must be a URL.").isURL().escape(),
 
   asyncHandler(async (req, res, next) => {
     const tags = req.body.tags.toString().split(",");
@@ -207,11 +206,6 @@ exports.resource_create_post = [
         Author.find().sort({ name: 1 }).exec(),
       ]);
 
-      // for (const type of allTypes) {
-      //   if (resource.type === type._id) {
-      //     type.checked = "true";
-      //   }
-      // }
       res.render("resource_form", {
         title: "Create Resource",
         authors: allAuthors,
