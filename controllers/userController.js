@@ -38,7 +38,7 @@ exports.user_create_post = [
   }),
 ];
 
-/* Create User help function */
+/* Create User helper function */
 const createUser = asyncHandler(async (req, res, next) => {
   const hashedPassword = await generatePassword(req.body.password);
   try {
