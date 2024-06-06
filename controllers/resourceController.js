@@ -7,15 +7,21 @@ const { default: mongoose } = require("mongoose");
 
 /* Homepage GET */
 exports.index = asyncHandler(async (req, res, next) => {
-  const [numResources, numTypes, numAuthors] = await Promise.all([
-    ResourceDetail.countDocuments({}).exec(),
-    ResourceType.countDocuments({}).exec(),
-    Author.countDocuments({}).exec(),
+  let [allTags, numResources, allTypes, numAuthors] = await Promise.all([
+    ResourceDetail.collection.distinct("tags"),
+    ResourceDetail.countDocuments().exec(),
+    ResourceDetail.collection.distinct("types"),
+    Author.countDocuments().exec(),
   ]);
+
+  const numTags = allTags.toString().split(",").length;
+  const numTypes = allTypes.toString().split(",").length;
+
   res.render("index", {
     resource_count: numResources,
     type_count: numTypes,
     author_count: numAuthors,
+    tag_count: numTags,
     user: req.user,
   });
 });
