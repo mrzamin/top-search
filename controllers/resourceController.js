@@ -31,7 +31,8 @@ exports.resource_list = asyncHandler(async (req, res, next) => {
   const allResources = await ResourceDetail.find({})
     .populate("author")
     .populate("tags")
-    .sort({ tags: 1 })
+    .populate("types")
+    .sort("name")
     .exec();
   res.render("resource_list", {
     title: "All Resources",
