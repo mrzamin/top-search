@@ -10,35 +10,38 @@ block content
                 .header__search 
                 .header__avatar 
             aside.sidenav
-                .sidenav__close-icon
-                i.fas.fa-times.sidenav__brand-close
+               
                 ul.sidenav__list
-                li.sidenav__list-item 
-                    a(href="/database/resources") Resources
-                li.sidenav__list-item 
-                    a(href="/database/authors") Authors
+                    
+                    li.sidenav__list-item 
+                        a(href="/database/resources") Resources
+                    li.sidenav__list-item 
+                        a(href="/database/authors") Authors
 
-                li.sidenav__list-item
-                    a(href="/database/types") Types
-                li.sidenav__list-item
-                    a(href="/database/courses") Subjects
+                    li.sidenav__list-item
+                        a(href="/database/types") Types
+                    li.sidenav__list-item
+                        a(href="/database/courses") Subjects
              
             main.main
                 .main-header
-                    .main-header__heading Welcome back !{currentUser.username}! 
-                    .main-header__updates Last Login: 05/27/2024
+                    img(src="/images/mouseclick.png", alt="")
+                    div
+                        h3.main-header__heading Welcome back !{currentUser.username}! 
+                        .main-header__updates Last Login: 05/27/2024
+                    
                 .main-overview
                     .overviewcard
-                        .overviewcard__icon Resources
+                        h3.overviewcard__icon Resources
                         .overviewcard__info 73
                     .overviewcard
-                        .overviewcard__icon Author
+                        h4.overviewcard__icon Types
                         .overviewcard__info 25
                     .overviewcard
-                        .overviewcard__icon Types
+                        h4.overviewcard__icon Tags
                         .overviewcard__info 4
                     .overviewcard
-                        .overviewcard__icon Subjects 
+                        h4.overviewcard__icon Authors
                         .overviewcard__info 7
                 .main-cards
                     .card Recently Added: Resources

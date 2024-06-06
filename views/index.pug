@@ -5,63 +5,71 @@ block content
   section#welcome.grid
     .welcome-text
       h2
-        | A Curated Collection of Web Development Materials
+        | Web Developer Database 
         
       p.leading
-        | Access the best free learning resources via a convenient search feature.
+        | A collection of amazing & free web development learning resources that are worth saving.
         
-      a.button(href="#materials") Explore Database
+      div.call-to-action 
+        a.button(href="#materials") Explore Database
+        a(href="/users/login").login-button Login
     .welcome-img
       img(
         alt="mouseclick image" 
         src="../images/mouseclick.png"
         )
-  section#materials
-    h3 Materials in this Database
-    .projects.grid
-      a(href="/database/resources/node")
-        h4 Node
-      a(href="/database/resources/react")
-        h4 React
+  section#topics
+    h3 Topics in the Database
+    .topics.grid
+      a(href="/database/resources/computerbasics")
+        h4 Computer Basics
+      a(href="/database/resources/programminglanguages")
+        h4 Programming Languages
+      a(href="/database/resources/problemsolving")
+        h4 Problem Solving
+      a(href="/database/resources/htmlandcss")
+        h4 HTML & CSS
       a(href="/database/resources/javascript")
         h4 JavaScript
-      a(href="/database/resources/advancedhtmlandcss")
-        h4 Advanced HTML & CSS
-      a(href="/database/resources/intermediatehtmlandcss")
-        h4 Intermediate HTML & CSS
-      a(href="/database/resources/foundations")
-        h4 Foundations
-      a(href="/database/resources/gettinghired")
-        h4 Getting Hired
-  section#purpose
-    h3 Collections & Document Counts
+      a(href="/database/resources/react")
+        h4 Frontend Frameworks
+      a
+        h4
+          | ...and 
+          span more!
+    
+  section#collections
+    h3 Database Collections
     ul.grid
-      li
-        a(href="#portfolio").button 
-        h4 Tags
+   
       li
         a(href="/database/resources").button !{resource_count}
         h4 Resources
       li
         a(href="/database/types").button !{type_count}
         h4 Resource Types
+
       li
-        a(href="/database/authors").button !{owner_count}
+        a(href="#portfolio").button !{tag_count}
+        h4 Tags
+      li
+        a(href="/database/authors").button !{author_count}
         h4 Authors
     p.leading
-      | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc fringilla
-      |   lacus diam. Mauris fringilla consectetur nibh, sit amet tempus augue.
+      | External contributions are welcome to make this database great. 
+      p Submit a resource or author you think others should know about!
+
   section#contact
     h3 Get In Touch
-    p.leading Send me your comment or feedback about this database!
-    form
+    p.leading Comment? Feedback? Broken link? I'd like to hear about it.
+    form.form-container
       input(
-        placeholder="NAME" 
+        placeholder="Name" 
         type="text"
         )
       input(
-        placeholder="EMAIL" 
+        placeholder="Email" 
         type="email"
         )
-      textarea(placeholder="YOUR MESSAGE")
-      button.button Send Message
+      textarea(placeholder="Your message")
+      button.button Submit
