@@ -56,11 +56,19 @@
 .sidenav__list-item {
   padding: 20px 20px 20px 40px;
   color: #ddd;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .sidenav__list-item:hover {
   background-color: #ddd;
   cursor: pointer;
+}
+
+.arrow {
+  width: 30px;
+  fill: var(--secondary);
 }
 
 .main {

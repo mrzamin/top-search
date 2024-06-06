@@ -1,0 +1,28 @@
+.resource-list {
+  display: grid;
+  place-items: center;
+  max-width: 850px;
+  text-align: center;
+  background-color: white;
+  gap: 20px;
+  font-size: 1em;
+}
+
+.resource-list ul {
+  font-family: roboto;
+  display: grid;
+  gap: 10px;
+}
+
+.resource-list li {
+  display: flex;
+  justify-content: center;
+}
+
+.resource-arrow {
+  width: 25px;
+}
+
+.resource-list li:hover {
+  text-decoration: underline;
+}

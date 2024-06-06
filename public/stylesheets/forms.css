@@ -9,11 +9,40 @@
   color: var(--secondary);
 }
 
-.form-container .button {
+.form-container .button,
+.cancelbtn {
+  font-size: 1em;
   display: block;
   cursor: pointer;
   width: 100%;
-  padding: 14px 20px;
+  padding: 8px 25px;
+  background: var(--secondary);
+  color: white;
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.6);
+  border-radius: 20px;
+  border: none;
+  text-transform: uppercase;
+  font-family: "Montserrat Alternates", sans-serif;
+}
+
+.cancelbtn {
+  margin: 10px 0;
+}
+
+.cancelbtn a {
+  color: white;
+}
+
+.form-container .back {
+  margin: 20px 0;
+}
+
+.signupbtn {
+  margin-top: 20px;
+}
+
+.form-container .button:hover {
+  opacity: 0.9;
 }
 
 .form-container {
@@ -35,8 +64,7 @@
   border: 1px solid #ccc;
 }
 
-.form-container input[type="text"],
-input[type="password"],
+.form-container input,
 select {
   width: 100%;
   padding: 12px 20px;
@@ -46,23 +74,20 @@ select {
   box-sizing: border-box;
 }
 
-.form-container input[type="text"]::placeholder,
-input[type="password"]::placeholder,
-select::placeholder {
+.form-container input::placeholder,
+select::placeholder,
+textarea::placeholder {
   font-family: "Montserrat Alternates", sans-serif;
   font-weight: bold;
 }
 
-.form-container input[type="text"],
-input[type="password"],
+.form-container input,
 select {
   margin-bottom: 20px;
 }
 
-.form-container [type="text"]:focus,
-input[type="password"]:focus,
-.login input[type="text"]:focus,
-.login input[type="password"]:focus {
+.form-container input:focus,
+textarea:focus {
   background-color: #ddd;
   outline: none;
 }

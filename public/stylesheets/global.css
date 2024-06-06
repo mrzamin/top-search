@@ -298,9 +298,17 @@ select,
   width: 100%;
   margin: 10px 0px;
 }
+#contact .leading {
+  margin-bottom: 20px;
+}
 
 #contact .button {
   margin-top: 10px;
+}
+
+.contact-grid {
+  display: grid;
+  place-items: center;
 }
 
 /* Footer styles */
@@ -513,9 +521,6 @@ footer img {
   .login-container span.psw {
     display: block;
     float: none;
-  }
-  .login-container .cancelbtn {
-    width: 100%;
   }
 }
 
